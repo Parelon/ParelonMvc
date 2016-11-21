@@ -57,9 +57,9 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
         }
 
         [HttpPost]
-        public void Click ( int id )
+        public void Click ( string id )
         {
-            return;
+            System.Console.WriteLine(id);
         }
     }
 }

@@ -3,30 +3,45 @@
 @if (!ViewBag.node.Name.Equals("p"))
 {
     string id = @ViewBag.node.Attributes.GetNamedItem("id").Value;
-    <form action="@Url.Action("Click")" , method="post" id="@id">
-        <a href="#" onclick="document.getElementById(@id).submit()">
-            <div class="row col-xs-12">
-                <div class="tag" style="min-width: 24px; max-width: 1%;">
-                    <span>@ViewBag.node.Name</span>
-                </div>
-                <div style="max-width: 90%; width: 90%;">
-                    @if (ViewBag.node.HasChildNodes)
-                    {
-                        foreach (XmlNode childNode in ViewBag.node.ChildNodes)
-                        {
-                            Html.RenderAction("ShowNode", "Document", new { node = childNode });
-                        }
-                    }
-                    else
-                    {
-                        <div class="@ViewBag.node.Name">@ViewBag.node.InnerText</div>
-                    }
-                </div>
-            </div>
-        </a>
-    </form>
+    <div class="row">
+        <div class="col-xs-1 tag">
+            <span>@ViewBag.node.Name</span>
+        </div>
+        <div class="col-xs-11 @ViewBag.node.Name">
+            @if (ViewBag.node.HasChildNodes)
+            {
+                foreach (XmlNode childNode in ViewBag.node.ChildNodes)
+                {
+                    Html.RenderAction("ShowNode", "Document", new { node = childNode });
+                }
+            }
+            @*else
+                {
+                    <div class="@ViewBag.node.Name">@ViewBag.node.InnerText</div>
+                }*@
+        </div>
+    </div>
 }
 else
 {
-    <div class="@ViewBag.node.Name">@ViewBag.node.InnerText</div>
+    <div class="p" id="@ViewBag.node.Attributes.GetNamedItem("id").Value" onclick="OnClick(this)">@ViewBag.node.InnerText</div>
 }
+
+<script>
+    var oldCaller = null;
+    function OnClick(caller) {
+        if (oldCaller != null && caller != oldCaller) {
+            oldCaller.style = "background-color: unset;";
+            caller.style = "background-color: yellow;";
+            oldCaller = caller;
+        }
+        else if (oldCaller != null && oldCaller == caller) {
+            caller.style = "background-color: unset";
+            oldCaller = null;
+        }
+        else {
+            caller.style = "background-color: yellow;";
+            oldCaller = caller;
+        }
+    }
+</script>

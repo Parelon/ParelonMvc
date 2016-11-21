@@ -118,47 +118,49 @@ textarea {
     background-color: #fff;
 }
 
-.bs-ul .divider {
-  height: 1px;
-  margin: 9px 0;
-  overflow: hidden;
-  background-color: #333;
-}
+    .bs-ul .divider {
+        height: 1px;
+        margin: 9px 0;
+        overflow: hidden;
+        background-color: #333;
+    }
 
-.bs-ul > li {
-  padding: 3px 20px;
-}
+    .bs-ul > li {
+        padding: 3px 20px;
+    }
 
-.bs-ul > li > a,
-.dropdown-menu > form > li > a {
-  display: block;
-  padding: 3px 20px;
-  clear: both;
-  font-weight: normal;
-  line-height: 1.42857143;
-  color: #333;
-  white-space: nowrap;
-}
-.bs-ul > li > a:hover,
-.bs-ul > li > a:focus,
-.dropdown-menu > form > li > a:hover,
-.dropdown-menu > form > li > a:focus {
-  color: #262626;
-  padding: 3px 20px;
-  text-decoration: none;
-  background-color: #f5f5f5;
-}
-.bs-ul > .active > a,
-.bs-ul > .active > a:hover,
-.bs-ul > .active > a:focus,
-.dropdown-menu > .active > form > li > a,
-.dropdown-menu > .active > form > li > a:hover,
-.dropdown-menu > .active > form > li > a:focus {
-  color: #fff;
-  text-decoration: none;
-  background-color: #337ab7;
-  outline: 0;
-}
+        .bs-ul > li > a,
+        .dropdown-menu > form > li > a {
+            display: block;
+            padding: 3px 20px;
+            clear: both;
+            font-weight: normal;
+            line-height: 1.42857143;
+            color: #333;
+            white-space: nowrap;
+        }
+
+            .bs-ul > li > a:hover,
+            .bs-ul > li > a:focus,
+            .dropdown-menu > form > li > a:hover,
+            .dropdown-menu > form > li > a:focus {
+                color: #262626;
+                padding: 3px 20px;
+                text-decoration: none;
+                background-color: #f5f5f5;
+            }
+
+    .bs-ul > .active > a,
+    .bs-ul > .active > a:hover,
+    .bs-ul > .active > a:focus,
+    .dropdown-menu > .active > form > li > a,
+    .dropdown-menu > .active > form > li > a:hover,
+    .dropdown-menu > .active > form > li > a:focus {
+        color: #fff;
+        text-decoration: none;
+        background-color: #337ab7;
+        outline: 0;
+    }
 
 .bs-ul, .bs-ul-actions > li {
     padding: 1px 1px;
@@ -205,6 +207,7 @@ textarea {
     height: auto;
     min-height: 50px;
     vertical-align: baseline;
+    border: solid 1px black;
 }
 
 .subtitle {
@@ -213,6 +216,7 @@ textarea {
     height: auto;
     min-height: 50px;
     vertical-align: baseline;
+    border: solid 1px black;
 }
 
 .article {
@@ -223,6 +227,7 @@ textarea {
     height: auto;
     min-height: 50px;
     vertical-align: baseline;
+    border: solid 1px black;
 }
 
 .paragraph {
@@ -232,7 +237,17 @@ textarea {
     font-style: unset;
     height: auto;
     min-height: 50px;
-    vertical-align: baseline;
+    border: solid 1px black;
+}
+
+.p {
+    font-size: unset;
+    text-align: justify;
+    font-weight: unset;
+    font-style: unset;
+    height: auto;
+    min-height: 50px;
+    border: solid 1px black;
 }
 
 .conclusions, .introduction {
@@ -243,6 +258,7 @@ textarea {
     height: auto;
     min-height: 50px;
     vertical-align: baseline;
+    border: solid 1px black;
 }
 
 .tag {
