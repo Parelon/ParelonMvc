@@ -3,7 +3,7 @@
 @if (!ViewBag.node.Name.Equals("p"))
 {
     string id = @ViewBag.node.Attributes.GetNamedItem("id").Value;
-    <div class="row">
+    <div class="row" onclick="OnClick(arguments[0] || window.event, this)" type="@ViewBag.node.Name">
         <div class="col-xs-1 tag">
             <span>@ViewBag.node.Name</span>
         </div>
@@ -24,24 +24,6 @@
 }
 else
 {
-    <div class="p" id="@ViewBag.node.Attributes.GetNamedItem("id").Value" onclick="OnClick(this)">@ViewBag.node.InnerText</div>
+    <div class="p" id="@ViewBag.node.Attributes.GetNamedItem("id").Value" onclick="OnClick(arguments[0] || window.event, this)">@ViewBag.node.InnerText</div>
 }
 
-<script>
-    var oldCaller = null;
-    function OnClick(caller) {
-        if (oldCaller != null && caller != oldCaller) {
-            oldCaller.style = "background-color: unset;";
-            caller.style = "background-color: yellow;";
-            oldCaller = caller;
-        }
-        else if (oldCaller != null && oldCaller == caller) {
-            caller.style = "background-color: unset";
-            oldCaller = null;
-        }
-        else {
-            caller.style = "background-color: yellow;";
-            oldCaller = caller;
-        }
-    }
-</script>

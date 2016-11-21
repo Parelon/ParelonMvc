@@ -14,3 +14,32 @@
         }
     </div>
 </div>
+
+@*@if (Request.IsAuthenticated)
+    {*@
+<script>
+    var oldCaller = null;
+    var id = 0;
+    function OnClick(event, caller) {
+        if (oldCaller == null && caller.attributes.type.value == "article") {
+            event.stopPropagation();
+            caller.style = "background-color: yellow;";
+            oldCaller = caller;
+        }
+        else if (oldCaller != null && oldCaller.attributes.type.value == "article" && caller.attributes.type.value == "paragraph") {
+            event.stopPropagation();
+            oldCaller.style = "background-color: unset;";
+            caller.style = "background-color: yellow;";
+            oldCaller = caller;
+        }
+        else if (caller == oldCaller) {
+            event.stopPropagation();
+            caller.style = "background-color: unset";
+            oldCaller = null;
+            return;
+        }
+        else
+            return;
+    }
+</script>
+@*}*@
