@@ -1,0 +1,28 @@
+﻿@using Parelon.Core
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Request.IsAuthenticated)
+{
+    Html.RenderAction("TitleBar", "Bars", new { title = "Bentornato ciccio", subtitle = "Eccoti qua" });
+}
+else
+{
+    Html.RenderAction("TitleBar", "Bars", new { title = "Benvenuto curioso", subtitle = "Eccoti qua" });
+}
+
+<div class="row">
+    <div class="col-xs-5 text-center">
+        @Html.ActionLink("Politiche pubbliche", "LeggiScrivi", "Assembly", new { @class = "btn btn-primary  btn-block" })
+    </div>
+    <div class="col-xs-5 col-xs-offset-2 text-center">
+        @Html.ActionLink("Discussioni interne", "LeggiScrivi", "Assembly", new { @class = "btn btn-primary  btn-block" })
+    </div>
+</div>
+
+@if (Request.IsAuthenticated)
+{
+    Html.RenderAction("StatusBar", "Bars");
+}

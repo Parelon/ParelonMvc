@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Topic di discussione";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ Html.RenderAction("TitleBar", "Bars", new { title = "Argomenti", subtitle = "Lista degli argomenti di discussione" }); }
+<div class="row" style="margin-bottom: 0px;">
+    <span class="col-xs-12 box-title"><strong>Lista discussioni aperte</strong></span>
+</div>
+<div class="row well" style="margin-top: 0px">
+    <ul class="bs-ul col-xs-12">
+        <li><div class="row">@Html.ActionLink("Dummy", "List", "Issue", routeValues: null, htmlAttributes: new { @class = "btn btn-primary col-xs-4" })</div></li>
+    </ul>
+</div>

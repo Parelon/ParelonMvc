@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Assemblea X";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ Html.RenderAction("TitleBar", "Bars", new { title = "Assemblea", subtitle = "Seleziona un'azione" }); }
+
+<div class="row">
+    <div class="col-xs-2 col-xs-offset-2">
+        @Html.ActionLink("Leggi", "List", "Territory", routeValues: null, htmlAttributes: new { @class = "btn btn-primary "})
+    </div>
+    <div class="col-xs-2 col-xs-offset-4">
+        @Html.ActionLink("Scrivi", "List", "Territory", routeValues: null, htmlAttributes: new { @class = "btn btn-primary "})
+    </div>
+</div>

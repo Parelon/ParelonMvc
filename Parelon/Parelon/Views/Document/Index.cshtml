@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using System.Xml;
+<div class="row">
+    <div class="col-xs-1">
+        <span>Document</span>
+    </div>
+    <div class="col-xs-11">
+        @foreach (XmlNode childNode in ViewBag.doc.getDocument.ChildNodes)
+        {
+            Html.RenderAction("ShowNode", new { node = childNode });
+        }
+    </div>
+</div>

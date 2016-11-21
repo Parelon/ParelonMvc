@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row"><span class="col-xs-12"><h1 class="text-center">Benvenuto!</h1></span></div>
+<div class="row"><div class="col-xs-12"><hr style="color: black" /></div></div>
+<div class="row equal">
+    <div class="col-xs-5">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-9">Ti sei gia' registrato? Clicca sul pulsante "Accedi" per iniziare!</div>
+                    <div class="col-xs-3">@Html.ActionLink("Accedi", "Login", "Account", new { ReturnUrl = "~/Assembly/Introduction" }, htmlAttributes: new { id = "loginLink", @class = "btn btn-primary  btn-block " }) </div>
+                </div>
+                <div class="row equal">
+                    <div class="col-xs-9">Vuoi partecipare? Clicca sul pulsante "Registrati" per registrarti!</div>
+                    <div class="col-xs-3">@Html.ActionLink("Registrati", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn btn-primary  btn-block " })</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-2"><p class="h3 my_jumbotron text-center">Oppure</p></div>
+    <div class="col-xs-5">
+        <div class="row equal my_jumbotron">
+            <div class="col-xs-9">Vuoi solo dare un'occhiata? Clicca sul pulsante "Esplora" per consultare anonimamente le discussioni e i loro contenuti!</div>
+            <div class="col-xs-3">@Html.ActionLink("Esplora", "Introduction", "Assembly", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn btn-primary  btn-block my_jumbatron" })</div>
+        </div>
+    </div>
+</div>
+<div class="row"><div class="col-xs-12"><hr style="color: black" /></div></div>
+<div class="row">
+    <div class="col-xs-6 col-xs-offset-2"><span class="text-center">Hai un codice di attivazione e non sai come usarlo? Clicca su "Attiva account"</span></div>
+    <div class="col-xs-2">@Html.ActionLink("Attiva account", "Activate", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn btn-primary  btn-block my_jumbatron" })</div>
+</div>

@@ -1,0 +1,47 @@
+﻿@using Parelon.Core
+
+@{
+    ViewBag.Title = "Problema";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    Html.RenderAction("TitleBar", "Bars", new { title = "Titolo del problema", subtitle = "Abstract: (max. 180 caratteri) Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam ecc." });
+    // Introduction
+    Html.RenderPartial("_Introduction");
+    // Attachment
+    Html.RenderAction("List", "Attachment");
+    // Keywords
+    Html.RenderPartial("_Keywords");
+    // Initiative
+    Html.RenderAction("List", "Initiative");
+    // Author
+    // Check privacy settings
+    if (Privacy.isAccessible())
+    {
+        // Check for anonimus discussion
+        Html.RenderPartial("_Authors", new { isAnonimous = Privacy.isAnonimous() });
+    }
+    // Policy
+    Html.RenderPartial("_Policy");
+    // Actions
+    Html.RenderPartial("_Actions");
+    // Check privacy settings
+    <a name="Transparency"></a>
+    if (Privacy.isAccessible())
+    {
+        <div class="row"style="margin-bottom: 0px;">
+            <button class="col-xs-4 box-title" data-toggle="collapse" data-target=".transparency-collapse"><strong>Mostra area trasparenza</strong></button>
+        </div>
+        <div class="row transparency-collapse collapse"style="margin-top: 0px;">
+            <div class="col-xs-12 well">
+                @{
+                    //Supporters
+                    Html.RenderPartial("_Supporters", new { isAnonimous = Privacy.isAnonimous() });
+                    // Population
+                    Html.RenderPartial("_Population", new { isAnonimous = Privacy.isAnonimous() });
+                }
+            </div>
+        </div>
+                    }
+                    // DetailedData
+                    Html.RenderPartial("_DetailedData");
+}

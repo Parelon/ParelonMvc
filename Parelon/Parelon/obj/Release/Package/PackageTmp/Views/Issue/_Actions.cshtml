@@ -1,0 +1,20 @@
+﻿<div class="actions dropup dropdown-menu-right open">
+    <button class="btn btn-primary btn-lg dropdown-toggle" type="button" id="menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Mostra/Nascondi azioni possibili
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="menu">
+        <span class="box-title dropdown-header">Azioni Possibili</span>
+        @if (Request.IsAuthenticated)
+        {
+            <li><a>Sostieni</a></li>
+            <li><a>Disattiva aggiornamenti da questo problema</a></li>
+            <li><a>Proponi soluzione</a></li>
+            <li>@Html.ActionLink("Vota", "VoteNow", "Vote", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })</li>
+        }
+        <li role="separator" class="divider"></li>
+        <li><a href="#Introduction">Mostra l'introduzione</a></li>
+        <li><a href="#Attachment">Mostra gli allegati</a></li>
+        <li><a href="#Transparency">Mostra la trasparenza</a></li>
+    </ul>
+</div>

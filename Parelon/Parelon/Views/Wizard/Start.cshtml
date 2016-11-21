@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "Start the wizard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ Html.RenderAction("TitleBar", "Bars", new { title = "Procedura guidata", subtitle = "In questa pagina puoi segnalare un nuovo problema alla nostra comunita'." });
+}
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Step 1</a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12">Contenuto dello step 1</div>
+                </div>
+                <div class="row">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne" class="btn btn-primary col-xs-2 col-xs-offset-2">Avanti</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-success">
+        <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Step 2</a>
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12">Contenuto dello step 2</div>
+                </div>
+                <div class="row">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="btn btn-primary col-xs-2 col-xs-offset-2">Indietro</a>
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree" class="btn btn-primary col-xs-2 col-xs-offset-2">Avanti</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-danger">
+        <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Step 3</a>
+            </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12">Contenuto dello step 3</div>
+                </div>
+                <div class="row">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" class="btn btn-primary col-xs-2 col-xs-offset-2">Indietro</a>
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour" class="btn btn-primary col-xs-2 col-xs-offset-2">Avanti</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-warning">
+        <div class="panel-heading" role="tab" id="headingFour">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Step 4</a>
+            </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12">Contenuto dello step 4</div>
+                </div>
+                <div class="row">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree" class="btn btn-primary col-xs-2 col-xs-offset-2">Indietro</a>
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive" class="btn btn-primary col-xs-2 col-xs-offset-2">Avanti</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading" role="tab" id="headingFive">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFour">Step 5</a>
+            </h4>
+        </div>
+        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12">Contenuto dello step 5</div>
+                </div>
+                <div class="row">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour" class="btn btn-primary col-xs-2 col-xs-offset-2">Indietro</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

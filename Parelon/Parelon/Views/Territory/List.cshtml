@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Lista territori";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ Html.RenderAction("TitleBar", "Bars", new { title = "Territori", subtitle = "Lista dei territori" }); }
+
+<div class="row" style="margin-bottom: 0px;">
+    <span class="col-xs-12 box-title"><strong>Lista territori abilitati</strong></span>
+</div>
+<div class="row well" style="margin-top: 0px">
+    <ul class="bs-ul col-xs-12">
+        <li><div class="row">@Html.ActionLink("Dummy", "List", "Topic", routeValues: null, htmlAttributes: new { @class = "btn btn-primary col-xs-4" })</div></li>
+    </ul>
+</div>

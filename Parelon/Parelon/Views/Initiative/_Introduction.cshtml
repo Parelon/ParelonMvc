@@ -1,0 +1,49 @@
+﻿<a name="Introduction"></a>
+<div class="row">
+    <div class="col-xs-6">
+        @Html.Partial("~/Views/Shared/ProgressBar.cshtml")
+    </div>
+
+    <div class="col-xs-6">
+        <div class="row" style="margin-bottom: 0px;">
+            <span class="col-xs-6 box-title"><strong>Social</strong></span>
+        </div>
+        <div class="row well" style="margin-top: 0px;">
+            <div class="col-xs-12">
+                <div class="row">
+                    <span class="col-xs-12">@Request.Url.AbsoluteUri</span>
+                </div>
+                <div class="row" style="margin-top: 5px;">
+                    <div class="fb-like col-xs-12"
+                         data-href="@Request.Url.AbsoluteUri"
+                         data-layout="standard"
+                         data-action="like"
+                         data-show-faces="true">
+                        <a class="fb-xfbml-parse-ignore" target="_blank" href="@Request.Url.AbsoluteUri">Condividi</a>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 5px;">
+                    <div class="col-xs-3">
+                        <a class="twitter-share-button"
+                           href="https://twitter.com/intent/tweet?hashtags=parelon"
+                           data-size="default">Tweet</a>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="g-plusone" data-href="@Request.Url.AbsoluteUri"></div>
+                    </div>
+                    <div class="col-xs-3">
+                        <script type="IN/Share" data-url="@Request.Url.AbsoluteUri" data-counter="right">
+                        </script>
+                    </div>
+                    <div class="col-xs-3">
+                        <a href="https://telegram.me/share/url?url=@Request.Url.AbsoluteUri"><img src="~/Content/Images/telegram_share_white.png" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @{
+        Html.RenderAction("_TextBox", "Shared", new { Title = "Descrizione", Content = "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", titleClass = "col-xs-4 box-title", contentClass = "col-xs-12 text-justified" });
+
+        Html.RenderAction("_TextBox", "Shared", new { Title = "Obiettivo", Content = "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", titleClass = "col-xs-4 box-title", contentClass = "col-xs-12 text-justified" });
+    }

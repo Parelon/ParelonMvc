@@ -1,0 +1,15 @@
+﻿@using Parelon.Core;
+<a name="Population"></a>
+<div class="row" style="margin-bottom: 0px;">
+    <span class="col-xs-4 box-title">Votanti</span>
+</div>
+<div class="row well" style="margin-top: 0px;">
+    @if (Privacy.isAnonimous())
+    {
+        <div class="col-xs-12">Elenco degli aventi diritto di voto</div>
+    }
+    else
+    {
+        <div class="col-xs-12">Elenco pseudonimi degli aventi diritto di voto</div>
+    }
+</div>

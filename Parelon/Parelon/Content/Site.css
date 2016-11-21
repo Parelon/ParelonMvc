@@ -1,0 +1,250 @@
+﻿body {
+    margin-left: 1%;
+    margin-right: 1%;
+    padding: 0%;
+    background-image: url(Images/wallpaper.jpg);
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top: 4%;
+    margin-bottom: 3%;
+    background: rgba(255,255,255,0.63);
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/*.title {
+    width: 100%;
+    margin: 2% 0% 10% 0%;
+    padding: 1%;
+    vertical-align: middle;
+    height: 9%;
+}*/
+
+.text {
+    width: 100%;
+    height: 75%;
+    margin: 0px;
+    text-align: center;
+}
+
+.subtext {
+    width: 100%;
+    height: 25%;
+    margin: 0px;
+    text-align: center;
+}
+
+.info-message {
+    background-color: #cfc;
+    border: 2px solid #040;
+    color: #040;
+    padding: 3px;
+    margin: 3px;
+    text-align: center;
+}
+
+.error-message {
+    background-color: #fcc;
+    border: 2px solid #400;
+    color: #400;
+    padding: 3px;
+    margin: 3px;
+    text-align: center;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.equal {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+    .equal > div[class*='col-'] {
+        display: flex;
+        flex-direction: column;
+    }
+
+.my_jumbotron {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+}
+
+.actions {
+    float: right;
+    z-index: 1;
+    bottom: 0%;
+    right: 0px;
+    position: fixed;
+}
+
+.box-title {
+    background-color: #ffca65;
+    color: #333333;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: large;
+    margin-bottom: 0px;
+    border-radius: 4px;
+}
+
+.bs-ul {
+    left: 0px;
+    margin: 0px;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+}
+
+.bs-ul .divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.bs-ul > li {
+  padding: 3px 20px;
+}
+
+.bs-ul > li > a,
+.dropdown-menu > form > li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+.bs-ul > li > a:hover,
+.bs-ul > li > a:focus,
+.dropdown-menu > form > li > a:hover,
+.dropdown-menu > form > li > a:focus {
+  color: #262626;
+  padding: 3px 20px;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+.bs-ul > .active > a,
+.bs-ul > .active > a:hover,
+.bs-ul > .active > a:focus,
+.dropdown-menu > .active > form > li > a,
+.dropdown-menu > .active > form > li > a:hover,
+.dropdown-menu > .active > form > li > a:focus {
+  color: #fff;
+  text-decoration: none;
+  background-color: #337ab7;
+  outline: 0;
+}
+
+.bs-ul, .bs-ul-actions > li {
+    padding: 1px 1px;
+}
+
+.author-box {
+    min-height: 50px;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.author-box-element {
+    border: 1px solid #333;
+    border-radius: 4px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0.1%;
+}
+
+.user-box {
+    min-height: 50px;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.user-box-element {
+    border: 1px solid #333;
+    border-radius: 4px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0.1%;
+    background-color: #337ab7;
+}
+
+.user-box-avatar {
+    border-right: 1px dashed #333;
+    min-height: 50px;
+}
+
+.title {
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+    height: auto;
+    min-height: 50px;
+    vertical-align: baseline;
+}
+
+.subtitle {
+    font-size: large;
+    text-align: center;
+    height: auto;
+    min-height: 50px;
+    vertical-align: baseline;
+}
+
+.article {
+    font-size: large;
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    height: auto;
+    min-height: 50px;
+    vertical-align: baseline;
+}
+
+.paragraph {
+    font-size: unset;
+    text-align: justify;
+    font-weight: unset;
+    font-style: unset;
+    height: auto;
+    min-height: 50px;
+    vertical-align: baseline;
+}
+
+.conclusions, .introduction {
+    font-size: unset;
+    font-weight: unset;
+    font-style: unset;
+    text-align: justify;
+    height: auto;
+    min-height: 50px;
+    vertical-align: baseline;
+}
+
+.tag {
+    transform: rotate(-90deg);
+}
