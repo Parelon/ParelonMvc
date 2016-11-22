@@ -48,7 +48,7 @@
     <script src="https://apis.google.com/js/platform.js" async defer>{ lang: 'it' }</script>
     <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: it_IT</script>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -75,7 +75,7 @@
                     else
                     {
                         <li>@Html.ActionLink("Registrazione", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }) </li>
-                        <li>@Html.ActionLink("Accedi", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                        <li>@Html.ActionLink("Accedi", "Login", "Account", new { ReturnUrl = @Request.Path }, htmlAttributes: new { id = "loginLink" })</li>
                     }
                 </ul>
             </div>
@@ -86,7 +86,7 @@
             @RenderBody()
         </div>
     </div>
-    <footer class="navbar-inverse navbar-fixed-bottom" style="height: 3%">
+    <footer class="navbar-default navbar-fixed-bottom" style="height: 3%">
         <p>&copy; @DateTime.Now.Year - Parlamento Elettronico Online - dev</p>
     </footer>
 

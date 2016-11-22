@@ -1,45 +1,35 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-@using System.Xml;
-<div class="row">
-    <div class="col-xs-1">
-        <span>Document</span>
-    </div>
-    <div class="col-xs-11">
-        @foreach (XmlNode childNode in ViewBag.doc.getDocument.ChildNodes)
-        {
-            Html.RenderAction("ShowNode", new { node = childNode });
-        }
-    </div>
+﻿@using System.Xml;
+<div class="row col-xs-12">
+    @foreach (XmlNode childNode in ViewBag.doc.getDocument.ChildNodes)
+    {
+        Html.RenderAction("ShowNode", new { node = childNode });
+    }
 </div>
 
-@*@if (Request.IsAuthenticated)
-    {*@
-<script>
-    var oldCaller = null;
-    var id = 0;
-    function OnClick(event, caller) {
-        if (oldCaller == null && caller.attributes.type.value == "article") {
-            event.stopPropagation();
-            caller.style = "background-color: yellow;";
-            oldCaller = caller;
+@if (Request.IsAuthenticated)
+{
+    <script>
+        var oldCaller = null;
+        function OnClick_XmlElement(event, caller) {
+            if (oldCaller == null && caller.attributes.type.value == "article") {
+                event.stopPropagation();
+                caller.style = "background-color: yellow;";
+                oldCaller = caller;
+            }
+            else if (oldCaller != null && oldCaller.attributes.type.value == "article" && caller.attributes.type.value == "paragraph") {
+                event.stopPropagation();
+                oldCaller.style = "background-color: unset;";
+                caller.style = "background-color: yellow;";
+                oldCaller = caller;
+            }
+            else if (caller == oldCaller) {
+                event.stopPropagation();
+                caller.style = "background-color: unset";
+                oldCaller = null;
+                return;
+            }
+            else
+                return;
         }
-        else if (oldCaller != null && oldCaller.attributes.type.value == "article" && caller.attributes.type.value == "paragraph") {
-            event.stopPropagation();
-            oldCaller.style = "background-color: unset;";
-            caller.style = "background-color: yellow;";
-            oldCaller = caller;
-        }
-        else if (caller == oldCaller) {
-            event.stopPropagation();
-            caller.style = "background-color: unset";
-            oldCaller = null;
-            return;
-        }
-        else
-            return;
-    }
-</script>
-@*}*@
+    </script>
+}

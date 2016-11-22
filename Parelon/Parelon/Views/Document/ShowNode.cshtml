@@ -3,11 +3,9 @@
 @if (!ViewBag.node.Name.Equals("p"))
 {
     string id = @ViewBag.node.Attributes.GetNamedItem("id").Value;
-    <div class="row" onclick="OnClick(arguments[0] || window.event, this)" type="@ViewBag.node.Name">
-        <div class="col-xs-1 tag">
-            <span>@ViewBag.node.Name</span>
-        </div>
-        <div class="col-xs-11 @ViewBag.node.Name">
+    <div class="row structure-element" onclick="OnClick_XmlElement(arguments[0] || window.event, this)" type="@ViewBag.node.Name">
+        <div class="tag">@ViewBag.node.Name</div>
+        <div class="col-xs-11 col-xs-offset-1 @ViewBag.node.Name">
             @if (ViewBag.node.HasChildNodes)
             {
                 foreach (XmlNode childNode in ViewBag.node.ChildNodes)
@@ -24,6 +22,6 @@
 }
 else
 {
-    <div class="p" id="@ViewBag.node.Attributes.GetNamedItem("id").Value" onclick="OnClick(arguments[0] || window.event, this)">@ViewBag.node.InnerText</div>
+    <div class="p" id="@ViewBag.node.Attributes.GetNamedItem("id").Value" onclick="OnClick_XmlElement(arguments[0] || window.event, this)">@ViewBag.node.InnerText</div>
 }
 

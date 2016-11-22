@@ -200,37 +200,43 @@ textarea {
     min-height: 50px;
 }
 
-.title {
+.title > .p {
     font-size: xx-large;
     font-weight: bold;
     text-align: center;
     height: auto;
     min-height: 50px;
-    vertical-align: baseline;
-    border: solid 1px black;
+    position: relative;
 }
 
-.subtitle {
+.subtitle > .p {
     font-size: large;
     text-align: center;
     height: auto;
     min-height: 50px;
-    vertical-align: baseline;
-    border: solid 1px black;
 }
 
-.article {
+.article > .p {
     font-size: large;
     font-weight: bold;
     font-style: italic;
     text-align: center;
     height: auto;
     min-height: 50px;
-    vertical-align: baseline;
-    border: solid 1px black;
+    background-color: unset;
 }
 
-.paragraph {
+.paragraph > .p {
+    font-size: unset;
+    text-align: justify;
+    font-weight: unset;
+    font-style: unset;
+    height: auto;
+    min-height: 50px;
+    background-color: unset;
+}
+
+/*.p {
     font-size: unset;
     text-align: justify;
     font-weight: unset;
@@ -238,29 +244,30 @@ textarea {
     height: auto;
     min-height: 50px;
     border: solid 1px black;
-}
+}*/
 
-.p {
-    font-size: unset;
-    text-align: justify;
-    font-weight: unset;
-    font-style: unset;
-    height: auto;
-    min-height: 50px;
-    border: solid 1px black;
-}
-
-.conclusions, .introduction {
+.conclusions > .p, .introduction > .p {
     font-size: unset;
     font-weight: unset;
     font-style: unset;
     text-align: justify;
     height: auto;
     min-height: 50px;
-    vertical-align: baseline;
-    border: solid 1px black;
 }
 
 .tag {
     transform: rotate(-90deg);
+    font-size: x-small;
+    word-break: break-all;
+    bottom: 50%;
+    top: 50%;
+    position: absolute;
+    background-color: unset;
+}
+
+.structure-element {
+    position: relative;
+    border: 1px solid #333;
+    border-radius: 4px;
+    /*background-color: #ffca65;*/
 }

@@ -10,15 +10,8 @@
 
     // Introduction
     Html.RenderPartial("_Introduction");
-    // Draft
-    if (Document.instance == null)
-    {
-        Html.RenderAction("Edit", "Draft");
-    }
-    else
-    {
-        Html.RenderAction("Render", "Draft");
-    }
+    //Draft
+    Html.RenderPartial("_Draft");
     // Attachment
     Html.RenderAction("List", "Attachment");
     // Comments
