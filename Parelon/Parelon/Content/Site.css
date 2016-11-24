@@ -271,3 +271,17 @@ textarea {
     border-radius: 4px;
     /*background-color: #ffca65;*/
 }
+
+.vote-box {
+    border: 1px solid #333;
+    background-color: antiquewhite;
+    border-radius: 4px;
+}
+
+.panel-danger > .panel-body > .vote-box {
+    background-color: indianred;
+}
+
+.panel-success > .panel-body > .vote-box {
+    background-color: darkseagreen;
+}

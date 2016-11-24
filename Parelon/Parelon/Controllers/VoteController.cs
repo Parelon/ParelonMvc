@@ -15,5 +15,11 @@ namespace Parelon.Controllers
             else
                 return View();
         }
+
+        public ActionResult _VoteBox ( int initiativeId )
+        {
+            ViewBag.initiativeId = initiativeId;
+            return PartialView();
+        }
     }
 }
