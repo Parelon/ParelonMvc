@@ -1,6 +1,6 @@
 ﻿@using System.Xml;
 <div class="row col-xs-12">
-    @foreach (XmlNode childNode in ViewBag.doc.getDocument.ChildNodes)
+    @foreach (XmlNode childNode in ViewBag.doc.ChildNodes)
     {
         Html.RenderAction("ShowNode", new { node = childNode });
     }
@@ -13,14 +13,35 @@
         function OnClick_XmlElement(event, caller) {
             if (oldCaller == null && caller.attributes.type.value == "article") {
                 event.stopPropagation();
-                caller.style = "background-color: yellow;";
+                caller.style = "background-color: gold;";
                 oldCaller = caller;
             }
             else if (oldCaller != null && oldCaller.attributes.type.value == "article" && caller.attributes.type.value == "paragraph") {
                 event.stopPropagation();
-                oldCaller.style = "background-color: unset;";
-                caller.style = "background-color: yellow;";
-                oldCaller = caller;
+                $.ajax({
+                    url: '@Url.Action("isRelated")',
+                    type: 'POST',
+                    data: {
+                        idCaller: caller.attributes.id.value,
+                        idSelected: oldCaller.attributes.id.value
+                    },
+                    success: function (data) {
+                        if (data == "True") {
+                            oldCaller.style = "background-color: unset;";
+                            caller.style = "background-color: gold;";
+                            oldCaller = caller;
+                        }
+                        else {
+                            oldCaller.style = "background-color: unset;";
+                            oldCaller = null;
+                        }
+                    },
+                    error: function (data) {
+                        oldCaller.style = "background-color: unset;";
+                        oldCaller = null;
+                    }
+                })
+
             }
             else if (caller == oldCaller) {
                 event.stopPropagation();

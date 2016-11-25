@@ -11,22 +11,23 @@ namespace Parelon.Core
     {
         public static Document instance { get; set; }
 
-        public XmlDocument toXml()
+        public XmlDocument toXml ( )
         {
             return new XmlDocument();
         }
 
 
-        public Document(String text)
+        public Document ( String text )
         {
             int id = 1;
             doc = new XmlDocument();
             XmlDeclaration xmlDeclaration = doc.CreateXmlDeclaration("1.0", "UTF-8", null);
-            XmlElement root = doc.CreateElement("body");
+            XmlElement root = doc.CreateElement("root");
             XmlAttribute idAttr = doc.CreateAttribute("id");
             idAttr.Value = id++.ToString();
             root.Attributes.Append(idAttr);
             doc.AppendChild(root);
+            doc.InsertBefore(xmlDeclaration, root);
 
             String separator = @"\r\n";
             String[] strings = Regex.Split(text, separator);
@@ -164,7 +165,7 @@ namespace Parelon.Core
                         element.LastChild.Attributes.Append(idAttr);
                         element.LastChild.InnerText = strings[idx].Trim();
                     }
-                    else if(!strings[idx].Trim().Equals(@""))
+                    else if (!strings[idx].Trim().Equals(@""))
                     {
                         element = doc.CreateElement("p");
                         element.InnerText = strings[idx].Trim();
@@ -181,5 +182,34 @@ namespace Parelon.Core
         private XmlDocument doc;
 
         public XmlDocument getDocument { get { return doc; } }
+
+        public XmlNode findNodeById ( string id )
+        {
+            foreach (XmlNode node in doc.LastChild)
+            {
+                XmlNode result = findNodeById(node, id);
+                if (result != null)
+                    return result;
+            }
+            return null;
+        }
+
+        public XmlNode findNodeById ( XmlNode node, string id )
+        {
+            if (node.Name.Equals("p"))
+                return null;
+            if (node.Attributes.GetNamedItem("id").Value.Equals(id))
+                return node;
+            if (node.HasChildNodes)
+            {
+                for (int i = 0; i < node.ChildNodes.Count; i++)
+                {
+                    XmlNode result = findNodeById(node.ChildNodes[i], id);
+                    if (result != null)
+                        return result;
+                }
+            }
+            return null;
+        }
     }
 }
