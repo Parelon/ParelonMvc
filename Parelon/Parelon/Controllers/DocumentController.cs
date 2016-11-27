@@ -48,15 +48,18 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
             return PartialView();
         }
 
+        public ActionResult _ShowRandomPanel ( )
+        {
+            return PartialView();
+        }
+
         public bool isRelated ( string idCaller, string idSelected )
         {
             if (idCaller == null || idSelected == null)
                 return false;
-
             XmlNode selected = Document.instance.findNodeById(idSelected);
             if (selected == null)
                 return false;
-
             XmlNode parent = selected.ParentNode != null ? selected.ParentNode : null;
             while (parent != null)
             {

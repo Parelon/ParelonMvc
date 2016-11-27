@@ -269,7 +269,13 @@ textarea {
     position: relative;
     border: 1px solid #333;
     border-radius: 4px;
+    background-color: unset;
     /*background-color: #ffca65;*/
+}
+
+.selected {
+    padding-right: 150px;
+    background-color: gold;
 }
 
 .vote-box {

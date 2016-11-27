@@ -13,11 +13,12 @@
         function OnClick_XmlElement(event, caller) {
             if (oldCaller == null && caller.attributes.type.value == "article") {
                 event.stopPropagation();
-                caller.style = "background-color: gold;";
+                caller.attributes.class.value = "row structure-element selected";
                 oldCaller = caller;
             }
             else if (oldCaller != null && oldCaller.attributes.type.value == "article" && caller.attributes.type.value == "paragraph") {
                 event.stopPropagation();
+                //TODO Remove remote ajax call for performance improvements
                 $.ajax({
                     url: '@Url.Action("isRelated")',
                     type: 'POST',
@@ -27,30 +28,26 @@
                     },
                     success: function (data) {
                         if (data == "True") {
-                            oldCaller.style = "background-color: unset;";
-                            caller.style = "background-color: gold;";
+                            oldCaller.attributes.class.value = "row structure-element";
+                            caller.attributes.class.value = "row structure-element selected";
                             oldCaller = caller;
                         }
-                        else {
-                            oldCaller.style = "background-color: unset;";
+                        else {                     
+                            oldCaller.attributes.class.value = "row structure-element";
                             oldCaller = null;
                         }
                     },
                     error: function (data) {
-                        oldCaller.style = "background-color: unset;";
+                        oldCaller.attributes.class.value = "row structure-element";
                         oldCaller = null;
                     }
                 })
-
             }
             else if (caller == oldCaller) {
                 event.stopPropagation();
-                caller.style = "background-color: unset";
+                oldCaller.attributes.class.value = "row structure-element";
                 oldCaller = null;
-                return;
             }
-            else
-                return;
         }
     </script>
 }
