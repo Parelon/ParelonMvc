@@ -251,9 +251,9 @@
     <None Include="Properties\PublishProfiles\Mio.pubxml" />
     <None Include="Properties\PublishProfiles\TestLocalhost.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.1.0.js" />
+    <Content Include="Scripts\jquery-3.1.0.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -275,8 +275,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -343,7 +341,7 @@
     <Content Include="Views\Shared\_TextBox.cshtml" />
     <Content Include="Views\Shared\_GenericBox.cshtml" />
     <Content Include="Views\Vote\VoteNow.cshtml" />
-    <Content Include="Views\Wizard\Start.cshtml" />
+    <Content Include="Views\Wizard\AddIssue.cshtml" />
     <Content Include="Views\Draft\Edit.cshtml" />
     <Content Include="Views\Draft\Render.cshtml" />
     <Content Include="Views\Bars\MessagesBar.cshtml" />
@@ -357,6 +355,9 @@
     <Content Include="Views\Document\Display.cshtml" />
     <Content Include="Views\Initiative\_Draft.cshtml" />
     <Content Include="Views\Vote\_VoteBox.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Wizard\Start.cshtml" />
+    <Content Include="Views\Wizard\AddInitiative.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

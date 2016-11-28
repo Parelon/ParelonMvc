@@ -1,296 +1,38 @@
 ﻿@{
-    ViewBag.Title = "Start the wizard";
+    ViewBag.Title = "Pagina iniziale del wizard";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@{ Html.RenderAction("TitleBar", "Bars", new { title = "Procedura guidata", subtitle = "In questa pagina puoi segnalare un nuovo problema alla nostra comunita'." });
-}
-
-<form class="form-horizontal" data-toggle="validator" role="form" style="height: 800px; overflow-y: auto;">
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
-        @*
-            Primo passo: titolo del problema
-        *@
-        <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingProblemTitle">
-                <h4 class="panel-title">
-                    <a class="btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                       href="#collapseProblemTitle" aria-expanded="false" aria-controls="collapseProblemTitle">Primo passo: titolo del problema</a>
-                </h4>
-            </div>
-            <div id="collapseProblemTitle" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingProblemTitle">
-                <div class="panel-body">
-                    @*Form group for the title of the problem*@
-                    <div class="form-group">
-                        <label class="col-xs-3 control-label" for="problemTitle">Inserisci il titolo del problema che vuoi affrontare</label>
-                        <div class="col-xs-9">
-                            <input class="form-control" type="text" id="problemTitle" placeholder="Titolo del problema" style="max-width: unset; max-height: unset;" />
-                        </div>
-                    </div>
-                    @*Button "Next"*@
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemAbstract"
-                       aria-expanded="true" aria-controls="collapseProblemAbstract" class="pull-right btn btn-success">
-                        <span class="pull-left">Avanti</span>
-                        <div class="pull-right glyphicon glyphicon-chevron-right"></div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        @*
-            Secondo passo: abstract del problema
-        *@
-        <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingProblemAbstract">
-                <h4 class="panel-title">
-                    <a class="btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemAbstract" aria-expanded="false" aria-controls="collapseProblemAbstract">Secondo passo: breve descrizione del problema</a>
-                </h4>
-            </div>
-            <div id="collapseProblemAbstract" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingProblemAbstract">
-                <div class="panel-body">
-                    @*Form group for the abstract of the problem*@
-                    <div class="form-group has-feedback">
-                        <label for="problemAbstract" class="col-xs-3 control-label">Inserisci una breve descrizione del problema, lunga 180 caratteri al massimo</label>
-                        <div class="col-xs-9">
-                            <textarea type="text" rows="3" maxlength="180" class="form-control" id="problemAbstract"
-                                      placeholder="Abstract" required style="max-width: unset; word-break: break-word; resize: none;"
-                                      oninput="$('#abstractCharsLeft').text(180 - document.getElementById('problemAbstract').value.length);"></textarea>
-                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </div>
-                    <div class="row col-xs-12">
-                        <span>Hai ancora </span>
-                        <span id="abstractCharsLeft">180</span>
-                        <span>caratteri a disposizione.</span>
-                    </div>
-                    @*Buttons*@
-                    <div class="pull-right">
-                        @*Button "Back"*@
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemTitle"
-                           aria-expanded="true" aria-controls="collapseProblemTitle" class="btn btn-danger">
-                            <div class="pull-left glyphicon glyphicon-chevron-left"></div>
-                            <span class="pull-right">Indietro</span>
-                        </a>
-                        @*Button "Next"*@
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemDescription"
-                           aria-expanded="true" aria-controls="collapseProblemDescription" class="btn btn-success">
-                            <span class="pull-left">Avanti</span>
-                            <div class="pull-right glyphicon glyphicon-chevron-right"></div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*
-            Terzo passo: descrizione dettagliata del problema
-        *@
-        <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingProblemDescription">
-                <h4 class="panel-title">
-                    <a class="btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemDescription" aria-expanded="false" aria-controls="collapseProblemDescription">Terzo passo: decrizione dettagliata del problema</a>
-                </h4>
-            </div>
-            <div id="collapseProblemDescription" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingProblemDescription">
-                <div class="panel-body">
-                    @*Form group for the full description of the problem*@
-                    <div class="form-group">
-                        <label for="problemDescription" class="col-xs-3 control-label">Inserisci una descrizione dettagliata del problema</label>
-                        <div class="col-xs-9">
-                            <textarea type="text" rows="5" class="form-control" id="problemDescription" required
-                                      style="max-width: unset; word-break: break-word; resize: none;"></textarea>
-                        </div>
-                    </div>
-                    @*Buttons*@
-                    <div class="pull-right">
-                        @*Button "Back"*@
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemAbstract"
-                           aria-expanded="true" aria-controls="collapseProblemAbstract" class="btn btn-danger">
-                            <div class="pull-left glyphicon glyphicon-chevron-left"></div>
-                            <span class="pull-right">Indietro</span>
-                        </a>
-                        @*Button "Next"*@
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemAim"
-                           aria-expanded="true" aria-controls="collapseProblemAim" class="btn btn-success">
-                            <span class="pull-left">Avanti</span>
-                            <div class="pull-right glyphicon glyphicon-chevron-right"></div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*
-            Quarto passo: descrizione dell'obiettivo che ci si pone (da togliere?)
-        *@
-        <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingProblemAim">
-                <h4 class="panel-title">
-                    <a class="btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemAim" aria-expanded="false" aria-controls="collapseProblemAim">Quarto passo: obiettivo da raggiungere</a>
-                </h4>
-            </div>
-            <div id="collapseProblemAim" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingProblemAim">
-                <div class="panel-body">
-                    @*Form group for the aim of the problem*@
-                    <div class="form-group">
-                        <label for="problemAim" class="col-xs-3 control-label">Specifica l'obiettivo che vuoi ottenere</label>
-                        <div class="col-xs-9">
-                            <textarea type="text" rows="5" class="form-control" id="problemAim" required
-                                      style="max-width: unset; word-break: break-word; resize: none;"></textarea>
-                        </div>
-                    </div>
-                    @*Buttons*@
-                    <div class="pull-right">
-                        @*Button "Back"*@
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemDescription"
-                           aria-expanded="true" aria-controls="collapseProblemDescription" class="btn btn-danger">
-                            <div class="pull-left glyphicon glyphicon-chevron-left"></div>
-                            <span class="pull-right">Indietro</span>
-                        </a>
-                        @*Button "Next"*@
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemAttachments"
-                           aria-expanded="true" aria-controls="collapseProblemAttachments" class="btn btn-success">
-                            <span class="pull-left">Avanti</span>
-                            <div class="pull-right glyphicon glyphicon-chevron-right"></div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*
-            Quinto passo: inserimento allegati
-        *@
-        <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingProblemAttachments">
-                <h4 class="panel-title">
-                    <a class="btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemAttachments" aria-expanded="false" aria-controls="collapseProblemAttachments">Quinto passo: allegare documenti</a>
-                </h4>
-            </div>
-            <div id="collapseProblemAttachments" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingProblemAttachments">
-                <div class="panel-body">
-                    @*Form group for the attachments necessary to explain the problem*@
-                    <div class="form-group has-feedback">
-                        <label for="problemGdrive" class="col-xs-3 control-label">Inserisci il collegamento alla cartella GDrive in cui sono i documenti da allegare alla discussione</label>
-                        <div class="col-xs-9">
-                            <div class="input-group">
-                                <span class="input-group-addon">https://drive.google.com/open?id=</span>
-                                <input type="url" maxlength="28" class="form-control" id="problemGdrive" validate/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <label for="problemPresentation" class="col-xs-3 control-label">Se hai fatto un video di presentazione del problema, inserisci qui il suo indirizzo</label>
-                        <div class="col-xs-9">
-                            <div class="input-group">
-                                <span class="input-group-addon">https://www.youtube.com/watch?v=</span>
-                                <input type="url" maxlength="11" class="form-control" id="problemPresentation" />
-                            </div>
-                        </div>
-                    </div>
-                    @*Buttons*@
-                    <div class="pull-right">
-                        @*Button "Back"*@
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemAim"
-                           aria-expanded="true" aria-controls="collapseProblemAim" class="btn btn-danger">
-                            <div class="pull-left glyphicon glyphicon-chevron-left"></div>
-                            <span class="pull-right">Indietro</span>
-                        </a>
-                        @*Button "Next"*@
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemKeywords"
-                           aria-expanded="true" aria-controls="collapseProblemKeywords" class="btn btn-success">
-                            <span class="pull-left">Avanti</span>
-                            <div class="pull-right glyphicon glyphicon-chevron-right"></div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*
-            Sesto passo: inserimento parole chiave per il problema segnalato
-        *@
-        <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingProblemKeywords">
-                <h4 class="panel-title">
-                    <a class="btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemKeywords" aria-expanded="false" aria-controls="collapseProblemKeywords">Sesto passo: parole chiave</a>
-                </h4>
-            </div>
-            <div id="collapseProblemKeywords" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingProblemKeywords">
-                <div class="panel-body" onfocus="$('#accordion').scrollTo('#panelProblemKeywords');">
-                    @*Form group for the keywords of the problem*@
-                    <div class="form-group">
-                        <label for="problemKeywords" class="col-xs-3 control-label">Inserisci le parole chiave con cui definiresti questo problema</label>
-                        <div class="col-xs-9">
-                            <textarea type="text" rows="5" class="form-control" id="problemKeywords" required
-                                      style="max-width: unset; word-break: break-word; resize: none;"></textarea>
-                        </div>
-                    </div>
-                    @*Buttons*@
-                    <div class="pull-right">
-                        @*Button "Back"*@
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemAttachments"
-                           aria-expanded="true" aria-controls="collapseProblemAttachments" class="btn btn-danger">
-                            <div class="pull-left glyphicon glyphicon-chevron-left"></div>
-                            <span class="pull-right">Indietro</span>
-                        </a>
-                        @*Button "Next"*@
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemPolicy"
-                           aria-expanded="true" aria-controls="collapseProblemPolicy" class="btn btn-success">
-                            <span class="pull-left">Avanti</span>
-                            <div class="pull-right glyphicon glyphicon-chevron-right"></div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*
-            Settimo passo: policy
-        *@
-        <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingProblemPolicy">
-                <h4 class="panel-title">
-                    <a role="button" class="btn btn-success collapsed" data-toggle="collapse" data-parent="#accordion"
-                       href="#collapseProblemPolicy" aria-expanded="false" aria-controls="collapseProblemPolicy">Settimo passo: durata della discussione</a>
-                </h4>
-            </div>
-            <div id="collapseProblemPolicy" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingProblemPolicy">
-                <div class="panel-body">
-                    @*Form group for the policy of the problem*@
-                    <div class="form-group">
-                        <label for="problemPolicy" class="col-xs-3 control-label">Seleziona il tempo che tu pensi sia necessario per discutere approfonditamente il problema:</label>
-                        <div class="col-xs-9">
-                            <div class="btn-group">
-                                <button class="btn btn-primary btn-lg">Durata 1</button>
-                                <button class="btn btn-primary btn-lg">Durata 2</button>
-                                <button class="btn btn-primary btn-lg">Durata 3</button>
-                                <button class="btn btn-primary btn-lg">Durata 4</button>
-                            </div>
-                        </div>
-                    </div>
-                    @*Buttons*@
-                    <div class="pull-right">
-                        @*Button "Back"*@
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemKeywords"
-                           aria-expanded="true" aria-controls="collapseProblemKeywords" class="btn btn-danger">
-                            <div class="pull-left glyphicon glyphicon-chevron-left"></div>
-                            <span class="pull-right">Indietro</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+<h1 class="text-center">Wizard</h1>
+<hr />
+<div class="row">
+    <div class="col-xs-6">
+        <h3>Discussioni generiche</h3>
+        <h5 class="text-justify">Questo tipo di discussioni sono pensate per essere un luogo di discussione più ampio e più semplice rispetto agli atti parlamentari. Sono pensate per andar bene per qualsiasi tua esigenza. <strong>Se non sai che tipo di discussione scegliere, crea una Nuova discussione.</strong></h5>
+        <div class="row">
+            @Html.ActionLink("Nuova discussione", "AddIssue", routeValues: null, htmlAttributes : new { @class = "btn btn-primary col-xs-3 col-xs-offset-4" })
         </div>
     </div>
-    <div class="center-block">
-        <button type="button" class="btn btn-danger">
-            <div class="pull-right glyphicon glyphicon-remove"></div>
-            <span class="pull-left">Annulla</span>
-        </button>
-        <button type="button" class="btn btn-primary">
-            <div class="pull-right glyphicon glyphicon-save"></div>
-            <span class="pull-left">Salva la bozza</span>
-        </button>
-        <button type="button" class="btn btn-success">
-            <div class="pull-right glyphicon glyphicon-ok"></div>
-            <span class="pull-left">Pubblica subito</span>
-        </button>
+    <div class="col-xs-6" style="border-left: solid 1px #333">
+        <h3>Atti parlamentari</h3>
+        <h5 class="text-justify">Il risultato di questo tipo di discussioni sono pensati per essere utilizzati direttamente dai parlamentari. Richiedono quindi più attenzione nella scrittura, un numero importante di allegati, tempi di discussione più lunghi.</h5>
+        <h5 class="text-justify">Gli atti parlamentari possono essere divisi in tre grandi categorie: <em>mozioni</em>, <em>interrogazioni</em> e <em>proposte di legge</em>.</h5>
+        <div class="row">
+            <span class="col-xs-9 text-right"><strong>Le mozioni sono delle linee guida per l'attività delle amministrazioni.</strong></span>
+            <a class="btn btn-primary col-xs-3">Crea mozione</a>
+        </div>
+        <div class="row">
+            <span class="col-xs-9 text-right"><strong>Le interrogazioni servono per sapere cosa stanno facendo le amministrazioni per affrontare un problema.</strong></span>
+            <a class="btn btn-primary col-xs-3">Crea interrogazione</a>
+        </div>
+        <div class="row">
+            <span class="col-xs-9 text-right"><strong>Le proposte di legge servono a modificare le regole di tutti i giorni.</strong></span>
+            <a class="btn btn-primary col-xs-3">Crea p. di legge</a>
+        </div>
+        <h4 class="text-center">Oppure</h4>
+        <div class="row">
+            <span class="col-xs-9 text-right"><strong>Se vuoi analizzare i contenuti di un atto parlamentare con i nostri utenti, clicca su "Segnala atto".</strong></span>
+            <a class="btn btn-primary col-xs-3">Segnala atto</a>
+        </div>
     </div>
-</form>
-
-<script src="~/Scripts/validator.js" async></script>
+</div>

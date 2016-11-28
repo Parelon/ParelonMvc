@@ -1,0 +1,309 @@
+﻿@{
+    ViewBag.Title = "Proposta di una nuova soluzione";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ Html.RenderAction("TitleBar", "Bars", new { title = "Soluzione", subtitle = "In questa pagina puoi proporre una nuova soluzione a un problema segnalato." });
+}
+
+<form action="@Url.Action("AddIinitiative")" method="post" class="form-horizontal" data-toggle="validator" role="form">
+    @Html.AntiForgeryToken()
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+        @*
+            Primo passo: titolo della soluzione
+        *@
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="headingSolutionTitle" style="padding-top: 2px; padding-bottom: 2px;">
+                <a class="panel-title btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                   href="#collapseSolutionTitle" aria-expanded="false" aria-controls="collapseSolutionTitle">Primo passo: titolo della soluzione</a>
+            </div>
+            <div id="collapseSolutionTitle" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSolutionTitle">
+                <div class="panel-body">
+                    @*Form group for the title of the Solution*@
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label" for="SolutionTitle">Inserisci il titolo della soluzione che vuoi proporre</label>
+                        <div class="col-xs-9">
+                            <input class="form-control" type="text" id="SolutionTitle" placeholder="Titolo della Soluzione" style="max-width: unset; max-height: unset;" />
+                        </div>
+                    </div>
+                    @*Button "Next"*@
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSolutionAbstract"
+                       aria-expanded="true" aria-controls="collapseSolutionAbstract" class="pull-right btn btn-success">
+                        <span class="pull-left">Avanti</span>
+                        <div class="pull-right glyphicon glyphicon-chevron-right"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        @*
+            Secondo passo: abstract della soluzione
+        *@
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="headingSolutionAbstract" style="padding-top: 2px; padding-bottom: 2px;">
+                <a class="panel-title btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSolutionAbstract" aria-expanded="false" aria-controls="collapseSolutionAbstract">Secondo passo: breve descrizione della soluzione</a>
+            </div>
+            <div id="collapseSolutionAbstract" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSolutionAbstract">
+                <div class="panel-body">
+                    @*Form group for the abstract of the solution*@
+                    <div class="form-group has-feedback">
+                        <label for="SolutionAbstract" class="col-xs-3 control-label">Inserisci una breve descrizione della soluzione, lunga 180 caratteri al massimo</label>
+                        <div class="col-xs-9">
+                            <textarea type="text" rows="3" maxlength="180" class="form-control" id="SolutionAbstract"
+                                      placeholder="Abstract" required style="max-width: unset; word-break: break-word; resize: none;"
+                                      oninput="$('#abstractCharsLeft').text(180 - document.getElementById('SolutionAbstract').value.length);"></textarea>
+                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="row col-xs-12">
+                        <span>Hai ancora </span>
+                        <span id="abstractCharsLeft">180</span>
+                        <span>caratteri a disposizione.</span>
+                    </div>
+                    @*Buttons*@
+                    <div class="pull-right">
+                        @*Button "Back"*@
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSolutionTitle"
+                           aria-expanded="true" aria-controls="collapseSolutionTitle" class="btn btn-danger" style="margin-right: 50px">
+                            <div class="pull-left glyphicon glyphicon-chevron-left"></div>
+                            <span class="pull-right">Indietro</span>
+                        </a>
+                        @*Button "Next"*@
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSolutionDescription"
+                           aria-expanded="true" aria-controls="collapseSolutionDescription" class="btn btn-success">
+                            <span class="pull-left">Avanti</span>
+                            <div class="pull-right glyphicon glyphicon-chevron-right"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*
+            Terzo passo: descrizione dettagliata del soluzione
+        *@
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="headingSolutionDescription" style="padding-top: 2px; padding-bottom: 2px;">
+                <a class="panel-title btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSolutionDescription" aria-expanded="false" aria-controls="collapseSolutionDescription">Terzo passo: descrizione dettagliata della soluzione</a>
+            </div>
+            <div id="collapseSolutionDescription" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSolutionDescription">
+                <div class="panel-body">
+                    @*Form group for the full description of the Solution*@
+                    <div class="form-group">
+                        <label for="SolutionDescription" class="col-xs-3 control-label">Inserisci una descrizione dettagliata della soluzione</label>
+                        <div class="col-xs-9">
+                            <textarea type="text" rows="5" class="form-control" id="SolutionDescription" required
+                                      style="max-width: unset; word-break: break-word; resize: none;"></textarea>
+                        </div>
+                    </div>
+                    @*Buttons*@
+                    <div class="pull-right">
+                        @*Button "Back"*@
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSolutionAbstract"
+                           aria-expanded="true" aria-controls="collapseSolutionAbstract" class="btn btn-danger" style="margin-right: 50px">
+                            <div class="pull-left glyphicon glyphicon-chevron-left"></div>
+                            <span class="pull-right">Indietro</span>
+                        </a>
+                        @*Button "Next"*@
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSolutionContent"
+                           aria-expanded="true" aria-controls="collapseSolutionContent" class="btn btn-success">
+                            <span class="pull-left">Avanti</span>
+                            <div class="pull-right glyphicon glyphicon-chevron-right"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*
+            Quarto passo: testo della soluzione
+        *@
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="headingSolutionContent" style="padding-top: 2px; padding-bottom: 2px;">
+                <a class="panel-title btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSolutionContent" aria-expanded="false" aria-controls="collapseSolutionContent">Quarto passo: contenuto della soluzione</a>
+            </div>
+            <div id="collapseSolutionContent" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSolutionContent">
+                <div class="panel-body">
+                    @*Form group for the aim of the Solution*@
+                    <div class="form-group">
+                        <label for="SolutionContent" class="col-xs-3 control-label">Scrivi nel modo più dettagliato possibile in cosa consiste la tua soluzione</label>
+                        <div class="col-xs-9">
+                            <textarea type="text" rows="5" class="form-control" id="SolutionContent" required
+                                      style="max-width: unset; word-break: break-word; resize: none;"></textarea>
+                        </div>
+                    </div>
+                    @*Buttons*@
+                    <div class="pull-right">
+                        @*Button "Back"*@
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSolutionDescription"
+                           aria-expanded="true" aria-controls="collapseSolutionDescription" class="btn btn-danger" style="margin-right: 50px">
+                            <div class="pull-left glyphicon glyphicon-chevron-left"></div>
+                            <span class="pull-right">Indietro</span>
+                        </a>
+                        @*Button "Next"*@
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSolutionAttachments"
+                           aria-expanded="true" aria-controls="collapseSolutionAttachments" class="btn btn-success">
+                            <span class="pull-left">Avanti</span>
+                            <div class="pull-right glyphicon glyphicon-chevron-right"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*
+            Quinto passo: inserimento allegati
+        *@
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="headingSolutionAttachments" style="padding-top: 2px; padding-bottom: 2px;">
+                <a class="panel-title btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSolutionAttachments" aria-expanded="false" aria-controls="collapseSolutionAttachments">Quinto passo: documenti allegati</a>
+            </div>
+            <div id="collapseSolutionAttachments" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSolutionAttachments">
+                <div class="panel-body">
+                    @*Form group for the attachments necessary to explain the Solution*@
+                    <div class="form-group">
+                        <label for="inputAdd" class="col-xs-2">Inserisci il link e poi clicca su "Aggiungi"</label>
+                        <div id="inputAdd" class="input-group col-xs-5">
+                            <input id="resourceUrl" type="text" class="form-control" placeholder="Solo link a Youtube, Google Drive e OpenData" style="max-width: unset;" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" onclick="addResource();">Aggiungi</button>
+                            </span>
+                        </div>
+                        @*TODO: sistemare il layout, mette il div resources in una riga separata piuttosto che sulla stessa*@
+                        <div id="resources" class="col-xs-6"></div>
+                    </div>
+                    @*Buttons*@
+                    <div class="pull-right">
+                        @*Button "Back"*@
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSolutionContent"
+                           aria-expanded="true" aria-controls="collapseSolutionContent" class="btn btn-danger" style="margin-right: 50px">
+                            <div class="pull-left glyphicon glyphicon-chevron-left"></div>
+                            <span class="pull-right">Indietro</span>
+                        </a>
+                        @*Button "Next"*@
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSolutionKeywords"
+                           aria-expanded="true" aria-controls="collapseSolutionKeywords" class="btn btn-success">
+                            <span class="pull-left">Avanti</span>
+                            <div class="pull-right glyphicon glyphicon-chevron-right"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*
+            Sesto passo: inserimento parole chiave per la soluzione
+        *@
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="headingSolutionKeywords" style="padding-top: 2px; padding-bottom: 2px;">
+                <a class="panel-title btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSolutionKeywords" aria-expanded="false" aria-controls="collapseSolutionKeywords">Sesto passo: parole chiave</a>
+            </div>
+            <div id="collapseSolutionKeywords" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSolutionKeywords">
+                <div class="panel-body">
+                    @*Form group for the keywords of the Solution*@
+                    <div class="form-group">
+                        <label for="SolutionKeywords" class="col-xs-3 control-label">Inserisci le parole chiave con cui definiresti questa soluzione</label>
+                        <div class="col-xs-9">
+                            <textarea type="text" rows="5" class="form-control" id="SolutionKeywords" required
+                                      style="max-width: unset; word-break: break-word; resize: none;"></textarea>
+                        </div>
+                    </div>
+                    @*Buttons*@
+                    <div class="pull-right">
+                        @*Button "Back"*@
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSolutionAttachments"
+                           aria-expanded="true" aria-controls="collapseSolutionAttachments" class="btn btn-danger" style="margin-right: 50px">
+                            <div class="pull-left glyphicon glyphicon-chevron-left"></div>
+                            <span class="pull-right">Indietro</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <button type="button" class="btn btn-danger">
+        <div class="pull-right glyphicon glyphicon-remove" style="padding-left: 10px"></div>
+        <span class="pull-left">Annulla</span>
+    </button>
+    <button type="button" class="btn btn-primary">
+        <div class="pull-right glyphicon glyphicon-save" style="padding-left: 10px"></div>
+        <span class="pull-left">Salva ma non pubblicare</span>
+    </button>
+    <button type="button" class="btn btn-success">
+        <div class="pull-right glyphicon glyphicon-ok" style="padding-left: 10px"></div>
+        <span class="pull-left">Salva e pubblica subito</span>
+    </button>
+</form>
+
+<script src="~/Scripts/validator.js" async></script>
+<script>
+    var gDrivePresent = false;
+    function addResource() {
+        var input = $('#resourceUrl')[0];
+        var list = $('#resources')[0];
+        var url = input.value.toString();
+        if (url.startsWith("https://drive.google.com/open?id=") && !gDrivePresent) {
+            gDrivePresent = true;
+            list.appendChild(createResource('gdrive', url));
+            input.value = "";
+        }
+        else if (url.startsWith('https://www.youtube.com/watch?v=') || url.startsWith('https://youtu.be/')) {
+            for (var i = 1; i < $('#resources')[0].childNodes.length; i++)
+                if (getResourceUrlAt(i) == url)
+                    return;
+            list.appendChild(createResource('video', url));
+            input.value = "";
+        }
+        else if (url.startsWith('http://dati.lazio.it/')) {
+            for (var i = 1; i <= $('#resources')[0].childNodes.length; i++)
+                if (getResourceUrlAt(i) == url)
+                    return;
+            list.appendChild(createResource('opendata', url));
+            input.value = "";
+        }
+    }
+
+    function removeResource(caller) {
+        $('#resources')[0].removeChild(caller);
+    }
+
+    function getResourceUrlAt(index) {
+        if (index > 0)
+            return $('#resources')[0].childNodes.item(index).childNodes.item(0).textContent
+        else
+            return "";
+    }
+
+    function createResource(type, url) {
+        var label = document.createElement('span');
+        var hiddenUrl = document.createElement('input');
+        hiddenUrl.hidden = true;
+        hiddenUrl.textContent = url;
+        if (url.length > 30)
+            label.innerText = short(url);
+        label.style.marginLeft = '2px';
+        label.style.marginRight = '2px';
+        var logo = document.createElement('div');
+        logo.classList.add('glyphicon');
+        if (type == 'video')
+            logo.classList.add('glyphicon-facetime-video');
+        else if (type == 'gdrive')
+            logo.classList.add('glyphicon-folder-open');
+        else if (type == 'opendata')
+            logo.classList.add('glyphicon-dashboard');
+        else
+            logo.classList.add('glyphicon-file');
+        var remove = document.createElement('div');
+        remove.classList.add('glyphicon', 'glyphicon-remove');
+        remove.href = '#';
+        var div = document.createElement('div');
+        $(remove).click(function () { removeResource(div); });
+        div.appendChild(hiddenUrl);
+        div.appendChild(logo);
+        div.appendChild(label);
+        div.appendChild(remove);
+        return div;
+    }
+
+    function short(url) {
+        var dim = url.length;
+        var part1 = url.substring(0, 12);
+        var part2 = url.substring(dim - 12, dim);
+        return part1 + '[...]' + part2;
+    }
+</script>

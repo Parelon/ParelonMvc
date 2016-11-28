@@ -1,0 +1,19 @@
+﻿<div class="row text-center">
+    @if (Request.IsAuthenticated) //&& User.isAdmin)
+    {
+        <a>Amministrazione</a>
+        @Html.Raw("&bull;")
+    }
+    <a>Impostazioni</a>
+    &bull;
+    <a>Scarica database</a>
+    &bull;
+    <a>Info e condizioni d'uso</a>
+</div>
+<div class="row text-center">
+    <span>&copy; @DateTime.Now.Year - Parlamento Elettronico Online - dev</span>
+    &bull;
+    <span>Questo sito usa parti di Liquid Feedback</span>
+    &bull;
+    <span>Questo sito usa <a href="http://glyphicons.com/">Glyphicons</a></span>
+</div>
