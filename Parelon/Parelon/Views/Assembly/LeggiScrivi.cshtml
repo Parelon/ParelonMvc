@@ -16,3 +16,24 @@
         </div>
     }
 </div>
+@if (Request.IsAuthenticated)
+{
+    <div class="row">
+        <div class="col-xs-6">
+            <h5>
+                Le tue proposte
+            </h5>
+            <div style="border-top: solid 1px #333">
+                Elenco proposte recenti
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <h5>
+                I tuoi voti
+            </h5>
+            <div style="border-top: solid 1px #333">
+                Elenco voti recenti
+            </div>
+        </div>
+    </div>
+}

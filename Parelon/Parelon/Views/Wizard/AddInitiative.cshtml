@@ -13,7 +13,7 @@
             Primo passo: titolo della soluzione
         *@
         <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingSolutionTitle" style="padding-top: 2px; padding-bottom: 2px;">
+            <div class="panel-heading" role="tab" id="headingSolutionTitle">
                 <a class="panel-title btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                    href="#collapseSolutionTitle" aria-expanded="false" aria-controls="collapseSolutionTitle">Primo passo: titolo della soluzione</a>
             </div>
@@ -39,7 +39,7 @@
             Secondo passo: abstract della soluzione
         *@
         <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingSolutionAbstract" style="padding-top: 2px; padding-bottom: 2px;">
+            <div class="panel-heading" role="tab" id="headingSolutionAbstract">
                 <a class="panel-title btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSolutionAbstract" aria-expanded="false" aria-controls="collapseSolutionAbstract">Secondo passo: breve descrizione della soluzione</a>
             </div>
             <div id="collapseSolutionAbstract" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSolutionAbstract">
@@ -82,7 +82,7 @@
             Terzo passo: descrizione dettagliata del soluzione
         *@
         <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingSolutionDescription" style="padding-top: 2px; padding-bottom: 2px;">
+            <div class="panel-heading" role="tab" id="headingSolutionDescription">
                 <a class="panel-title btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSolutionDescription" aria-expanded="false" aria-controls="collapseSolutionDescription">Terzo passo: descrizione dettagliata della soluzione</a>
             </div>
             <div id="collapseSolutionDescription" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSolutionDescription">
@@ -117,7 +117,7 @@
             Quarto passo: testo della soluzione
         *@
         <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingSolutionContent" style="padding-top: 2px; padding-bottom: 2px;">
+            <div class="panel-heading" role="tab" id="headingSolutionContent">
                 <a class="panel-title btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSolutionContent" aria-expanded="false" aria-controls="collapseSolutionContent">Quarto passo: contenuto della soluzione</a>
             </div>
             <div id="collapseSolutionContent" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSolutionContent">
@@ -126,7 +126,7 @@
                     <div class="form-group">
                         <label for="SolutionContent" class="col-xs-3 control-label">Scrivi nel modo più dettagliato possibile in cosa consiste la tua soluzione</label>
                         <div class="col-xs-9">
-                            <textarea type="text" rows="5" class="form-control" id="SolutionContent" required
+                            <textarea type="text" rows="15" class="form-control" id="SolutionContent" required
                                       style="max-width: unset; word-break: break-word; resize: none;"></textarea>
                         </div>
                     </div>
@@ -152,7 +152,7 @@
             Quinto passo: inserimento allegati
         *@
         <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingSolutionAttachments" style="padding-top: 2px; padding-bottom: 2px;">
+            <div class="panel-heading" role="tab" id="headingSolutionAttachments">
                 <a class="panel-title btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSolutionAttachments" aria-expanded="false" aria-controls="collapseSolutionAttachments">Quinto passo: documenti allegati</a>
             </div>
             <div id="collapseSolutionAttachments" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSolutionAttachments">
@@ -191,7 +191,7 @@
             Sesto passo: inserimento parole chiave per la soluzione
         *@
         <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingSolutionKeywords" style="padding-top: 2px; padding-bottom: 2px;">
+            <div class="panel-heading" role="tab" id="headingSolutionKeywords">
                 <a class="panel-title btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSolutionKeywords" aria-expanded="false" aria-controls="collapseSolutionKeywords">Sesto passo: parole chiave</a>
             </div>
             <div id="collapseSolutionKeywords" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSolutionKeywords">
@@ -276,8 +276,6 @@
         hiddenUrl.textContent = url;
         if (url.length > 30)
             label.innerText = short(url);
-        label.style.marginLeft = '2px';
-        label.style.marginRight = '2px';
         var logo = document.createElement('div');
         logo.classList.add('glyphicon');
         if (type == 'video')

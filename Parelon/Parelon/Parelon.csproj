@@ -317,11 +317,11 @@
     <Content Include="Views\Attachment\List.cshtml" />
     <Content Include="Views\Initiative\_PotentialSupporters.cshtml" />
     <Content Include="Views\Initiative\_Supporters.cshtml" />
-    <Content Include="Views\Issue\Show.cshtml" />
+    <Content Include="Views\Issue\ShowDiscussion.cshtml" />
     <Content Include="Views\Issue\_Introduction.cshtml" />
     <Content Include="Views\Issue\_Actions.cshtml" />
     <Content Include="Views\Issue\_Authors.cshtml" />
-    <Content Include="Views\Issue\_Initiatives.cshtml" />
+    <Content Include="Views\Issue\_ListInitiatives.cshtml" />
     <Content Include="Views\Issue\_Policy.cshtml" />
     <Content Include="Views\Issue\_Keywords.cshtml" />
     <Content Include="Views\Issue\_DetailedData.cshtml" />
@@ -358,6 +358,7 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Wizard\Start.cshtml" />
     <Content Include="Views\Wizard\AddInitiative.cshtml" />
+    <Content Include="Views\Issue\ShowAct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

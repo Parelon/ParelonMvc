@@ -9,6 +9,6 @@ namespace Parelon.Core
     {
         public static string getPolicy() { return "allPublic"; }
         public static bool isAccessible() { return true; }
-        public static bool isAnonimous() { return true; }
+        public static bool isAnonimous() { return false; }
     }
 }

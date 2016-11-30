@@ -2,8 +2,8 @@
     <div class="panel panel-primary">
         <div class="panel-heading" role="tab" id="headingOne">
             <div class="row">
-                <span class="box-title col-xs-4"><strong>Azioni Possibili</strong></span>
-                <a role="button" class="col-xs-offset-2 col-xs-6 btn btn-default" data-toggle="collapse" data-parent="#accordion" href="#actionsMenu" aria-expanded="true" aria-controls="collapseOne">
+                <span class="box-title"><strong>Azioni Possibili</strong></span>
+                <a role="button" class="pull-right btn btn-default" data-toggle="collapse" data-parent="#accordion" href="#actionsMenu" aria-expanded="true" aria-controls="collapseOne">
                     Mostra/Nascondi
                 </a>
             </div>
@@ -13,16 +13,16 @@
                 <ul class="bs-ul bs-ul-actions">
                     @if (Request.IsAuthenticated)
                     {
-                        <li class="li-actions"><a>Sostieni</a></li>
-                        <li class="li-actions"><a>Disattiva aggiornamenti da questo problema</a></li>
-                        <li class="li-actions">@Html.ActionLink("Proponi una soluzione", "AddInitiative", "Wizard", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })</li>
-                        <li class="li-actions">@Html.ActionLink("Vota", "VoteNow", "Vote", routeValues: null, htmlAttributes: new { @class = "btn btn-success" })</li>
-                        <li role="separator" class="li-actions divider"></li>
+                        <li><a class="btn btn-info"><div class="glyphicon glyphicon-thumbs-up"></div> Sostieni</a></li>
+                        <li><a class="btn btn-info"><div class="glyphicon glyphicon-volume-off"></div>Disattiva aggiornamenti da questo problema</a></li>
+                        <li><a class="btn btn-info" href="~/Wizard/AddInitiative"><div class="glyphicon glyphicon-edit"></div>Proponi una soluzione per questo problema</a></li>
+                        <li>@Html.ActionLink("Vota", "VoteNow", "Vote", routeValues: null, htmlAttributes: new { @class = "btn btn-success" })</li>
+                        <li class="divider"></li>
                     }
-                    <li class="li-actions"><a href="#Introduction">Mostra l'introduzione</a></li>
-                    <li class="li-actions"><a href="#Attachment">Mostra gli allegati</a></li>
-                    <li class="li-actions"><a href="#Initiatives">Mostra le soluzioni proposte</a></li>
-                    <li class="li-actions"><a href="#Transparency">Mostra la trasparenza</a></li>
+                    <li class="li-actions"><a class="btn btn-default" href="#Introduction">Mostra l'introduzione</a></li>
+                    <li class="li-actions"><a class="btn btn-default" href="#Attachment">Mostra gli allegati</a></li>
+                    <li class="li-actions"><a class="btn btn-default" href="#Initiatives">Mostra le soluzioni proposte</a></li>
+                    <li class="li-actions"><a class="btn btn-default" href="#Transparency">Mostra l'area trasparenza</a></li>
                 </ul>
             </div>
         </div>

@@ -1,0 +1,123 @@
+﻿@using Parelon.Core
+
+@{
+    ViewBag.Title = "Discussione Atto - Problema";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ Html.RenderAction("TitleBar", "Bars", new { title = "Titolo del problema", subtitle = "Abstract: (max. 180 caratteri) Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam ecc." }); }
+@*Introduction*@
+<a name="Introduction"></a>
+<div class="row">
+    <div class="col-xs-6">
+        @Html.Partial("~/Views/Shared/ProgressBar.cshtml")
+    </div>
+    <div class="col-xs-6">
+        <div class="row" style="margin-bottom: 0px;">
+            <span class="col-xs-6 box-title"><strong>Social</strong></span>
+        </div>
+        <div class="row well" style="margin-top: 0px;">
+            <div class="col-xs-12">
+                <div class="row">
+                    <span class="col-xs-12">@Request.Url.AbsoluteUri</span>
+                </div>
+                <div class="row" style="margin-top: 5px;">
+                    <div class="fb-like col-xs-12"
+                         data-href="@Request.Url.AbsoluteUri"
+                         data-layout="standard"
+                         data-action="like"
+                         data-show-faces="true">
+                        <a class="fb-xfbml-parse-ignore" target="_blank" href="@Request.Url.AbsoluteUri">Condividi</a>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 5px;">
+                    <div class="col-xs-3">
+                        <a class="twitter-share-button"
+                           href="https://twitter.com/intent/tweet?hashtags=parelon"
+                           data-size="default">Tweet</a>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="g-plusone" data-href="@Request.Url.AbsoluteUri"></div>
+                    </div>
+                    <div class="col-xs-3">
+                        <script type="IN/Share" data-url="@Request.Url.AbsoluteUri" data-counter="right">
+                        </script>
+                    </div>
+                    <div class="col-xs-3">
+                        <a href="https://telegram.me/share/url?url=@Request.Url.AbsoluteUri"><img src="~/Content/Images/telegram_share_white.png" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*Initiatives*@
+@if (true)
+{
+    //if there is just one initiative then render the text
+    Html.RenderAction("Index", "Document");
+}
+else
+{
+    //else show the alternatives
+    Html.RenderPartial("_ListInitiatives");
+}
+@*Attachment*@
+@{ Html.RenderAction("List", "Attachment"); }
+@*Keywords*@
+@{ Html.RenderPartial("_Keywords"); }
+
+@if (false)
+{
+    //if this is in response to something
+    <div class="row" style="margin-bottom: 0px;">
+        <span class="col-xs-4 box-title"><strong>In risposta al problema</strong></span>
+    </div>
+    <div class="row well" style="margin-top: 0px;">
+        <div class="col-xs-12">
+            <div class="row">
+                <a class="col-xs-4 btn btn-primary" href="@Url.Action("Issue", "ShowDiscussion")">
+                    Problema Dummy 1
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
+    @*Author*@
+    @*Check privacy settings*@
+    @if (Privacy.isAccessible())
+    {
+        // Check for anonimus discussion
+        Html.RenderPartial("_Authors", new { isAnonimous = Privacy.isAnonimous() });
+    }
+    @*Actions*@
+    @{ Html.RenderPartial("_Actions"); }
+    @*Check privacy settings*@
+    <a name="Transparency"></a>
+    @if (Privacy.isAccessible())
+    {
+        <div class="row" style="margin-bottom: 0px;">
+            <a role="button" class="col-xs-4 btn btn-primary" data-toggle="collapse" data-target="#transparency-data">
+                <strong>Mostra area trasparenza</strong>
+            </a>
+        </div>
+        <div class="row transparency-collapse collapse" id="transparency-data" style="margin-top: 0px;">
+            <div class="col-xs-12 well">
+                <div>
+                    @*Policy*@
+                    @{ Html.RenderPartial("_Policy"); }
+                </div>
+                <div>
+                    @*Supporters*@
+                    @{ Html.RenderPartial("_Supporters", new { isAnonimous = Privacy.isAnonimous() }); }
+                </div>
+                <div>
+                    @*Population*@
+                    @{ Html.RenderPartial("_Population", new { isAnonimous = Privacy.isAnonimous() }); }
+                </div>
+            </div>
+        </div>
+                        }
+                        @*DetailedData*@
+                        @{ Html.RenderPartial("_DetailedData"); }

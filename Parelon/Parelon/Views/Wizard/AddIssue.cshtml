@@ -13,7 +13,7 @@
             Primo passo: titolo del problema
         *@
         <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingProblemTitle" style="padding-top: 2px; padding-bottom: 2px;">
+            <div class="panel-heading" role="tab" id="headingProblemTitle">
                 <a class="panel-title btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                    href="#collapseProblemTitle" aria-expanded="false" aria-controls="collapseProblemTitle">Primo passo: titolo del problema</a>
             </div>
@@ -39,7 +39,7 @@
             Secondo passo: abstract del problema
         *@
         <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingProblemAbstract" style="padding-top: 2px; padding-bottom: 2px;">
+            <div class="panel-heading" role="tab" id="headingProblemAbstract">
                 <a class="panel-title btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemAbstract" aria-expanded="false" aria-controls="collapseProblemAbstract">Secondo passo: breve descrizione del problema</a>
             </div>
             <div id="collapseProblemAbstract" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingProblemAbstract">
@@ -82,7 +82,7 @@
             Terzo passo: descrizione dettagliata del problema
         *@
         <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingProblemDescription" style="padding-top: 2px; padding-bottom: 2px;">
+            <div class="panel-heading" role="tab" id="headingProblemDescription">
                 <a class="panel-title btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemDescription" aria-expanded="false" aria-controls="collapseProblemDescription">Terzo passo: descrizione dettagliata del problema</a>
             </div>
             <div id="collapseProblemDescription" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingProblemDescription">
@@ -117,7 +117,7 @@
             Quarto passo: descrizione dell'obiettivo che ci si pone (da togliere?)
         *@
         <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingProblemAim" style="padding-top: 2px; padding-bottom: 2px;">
+            <div class="panel-heading" role="tab" id="headingProblemAim">
                 <a class="panel-title btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemAim" aria-expanded="false" aria-controls="collapseProblemAim">Quarto passo: obiettivo da raggiungere</a>
             </div>
             <div id="collapseProblemAim" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingProblemAim">
@@ -152,7 +152,7 @@
             Quinto passo: inserimento allegati
         *@
         <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingProblemAttachments" style="padding-top: 2px; padding-bottom: 2px;">
+            <div class="panel-heading" role="tab" id="headingProblemAttachments">
                 <a class="panel-title btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemAttachments" aria-expanded="false" aria-controls="collapseProblemAttachments">Quinto passo: documenti allegati</a>
             </div>
             <div id="collapseProblemAttachments" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingProblemAttachments">
@@ -191,7 +191,7 @@
             Sesto passo: inserimento parole chiave per il problema segnalato
         *@
         <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingProblemKeywords" style="padding-top: 2px; padding-bottom: 2px;">
+            <div class="panel-heading" role="tab" id="headingProblemKeywords">
                 <a class="panel-title btn btn-success collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseProblemKeywords" aria-expanded="false" aria-controls="collapseProblemKeywords">Sesto passo: parole chiave</a>
             </div>
             <div id="collapseProblemKeywords" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingProblemKeywords">
@@ -226,7 +226,7 @@
             Settimo passo: policy
         *@
         <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingProblemPolicy" style="padding-top: 2px; padding-bottom: 2px;">
+            <div class="panel-heading" role="tab" id="headingProblemPolicy">
                 <a role="button" class="panel-title btn btn-success collapsed" data-toggle="collapse" data-parent="#accordion"
                    href="#collapseProblemPolicy" aria-expanded="false" aria-controls="collapseProblemPolicy">Settimo passo: durata della discussione</a>
             </div>
@@ -258,19 +258,19 @@
         </div>
     </div>
     <button type="button" class="btn btn-danger">
-        <div class="pull-right glyphicon glyphicon-remove" style="padding-left: 10px"></div>
+        <div class="pull-right glyphicon glyphicon-remove"></div>
         <span class="pull-left">Annulla</span>
     </button>
     <button type="button" class="btn btn-primary">
-        <div class="pull-right glyphicon glyphicon-save" style="padding-left: 10px"></div>
+        <div class="pull-right glyphicon glyphicon-save"></div>
         <span class="pull-left">Salva ma non pubblicare</span>
     </button>
     <button type="button" class="btn btn-success">
-        <div class="pull-right glyphicon glyphicon-ok" style="padding-left: 10px"></div>
+        <div class="pull-right glyphicon glyphicon-ok"></div>
         <span class="pull-left">Salva e pubblica subito</span>
     </button>
     <button type="button" class="btn btn-success">
-        <div class="pull-right glyphicon glyphicon-ok" style="padding-left: 10px"></div>
+        <div class="pull-right glyphicon glyphicon-ok"></div>
         <span class="pull-left">Pubblica e proponi una soluzione</span>
     </button>
 </form>
@@ -321,8 +321,6 @@
         hiddenUrl.textContent = url;
         if(url.length>30)
             label.innerText = short(url);
-        label.style.marginLeft = '2px';
-        label.style.marginRight = '2px';
         var logo = document.createElement('div');
         logo.classList.add('glyphicon');
         if (type == 'video')
