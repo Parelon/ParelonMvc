@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Topics";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Topics</h2>
+<a>Aggiungi nuovo topic</a>
+<a>Salva lista come Template</a>
+<a>Carica topic da Template</a>
+<a>Carica topic da file</a>
+<ul>
+    <li>Topic 1: @Html.ActionLink("Modifica", "EditTopic", "Admin")</li>
+    <li>Topic 2: @Html.ActionLink("Modifica", "EditTopic", "Admin")</li>
+    <li>Topic 3: @Html.ActionLink("Modifica", "EditTopic", "Admin")</li>
+    <li>Topic 4: @Html.ActionLink("Modifica", "EditTopic", "Admin")</li>
+</ul>

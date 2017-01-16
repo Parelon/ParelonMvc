@@ -1,0 +1,53 @@
+﻿@using System.Xml;
+<div class="row col-xs-12" style="background-color: lightgray">
+    @foreach (XmlNode childNode in ViewBag.doc.ChildNodes)
+    {
+        Html.RenderAction("ShowNode", new { node = childNode });
+    }
+</div>
+
+@if (Request.IsAuthenticated)
+{
+    <script>
+        var oldCaller = null;
+        function OnClick_XmlElement(event, caller) {
+            if (oldCaller == null && caller.attributes.type.value == "article") {
+                event.stopPropagation();
+                caller.attributes.class.value = "row structure-element selected";
+                oldCaller = caller;
+            }
+            else if (oldCaller != null && oldCaller.attributes.type.value == "article" && caller.attributes.type.value == "paragraph") {
+                event.stopPropagation();
+                //TODO Remove remote ajax call for performance improvements
+                $.ajax({
+                    url: '@Url.Action("isRelated")',
+                    type: 'POST',
+                    data: {
+                        idCaller: caller.attributes.id.value,
+                        idSelected: oldCaller.attributes.id.value
+                    },
+                    success: function (data) {
+                        if (data == "True") {
+                            oldCaller.attributes.class.value = "row structure-element";
+                            caller.attributes.class.value = "row structure-element selected";
+                            oldCaller = caller;
+                        }
+                        else {
+                            oldCaller.attributes.class.value = "row structure-element";
+                            oldCaller = null;
+                        }
+                    },
+                    error: function (data) {
+                        oldCaller.attributes.class.value = "row structure-element";
+                        oldCaller = null;
+                    }
+                })
+            }
+            else if (caller == oldCaller) {
+                event.stopPropagation();
+                oldCaller.attributes.class.value = "row structure-element";
+                oldCaller = null;
+            }
+        }
+    </script>
+}

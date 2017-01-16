@@ -1,19 +1,19 @@
 ﻿<div class="row text-center">
-    @if (Request.IsAuthenticated) //&& User.isAdmin)
+    @if (User.Identity.IsAuthenticated) //&& User.isAdmin)
     {
-        <a>Amministrazione</a>
+        @Html.ActionLink("Amministrazione", "Index", "Admin", routeValues: null, htmlAttributes: null)
         @Html.Raw("&bull;")
-        <a>Impostazioni</a>
+        @Html.ActionLink("Impostazioni", "Index", "Manage", routeValues: null, htmlAttributes: null)
         @Html.Raw("&bull;")
-        <a>Scarica database</a>
+        @Html.ActionLink("Scarica database", "Index", "DatabaseDumps", routeValues: null, htmlAttributes: null)
     }
 </div>
 <div class="row text-center">
     <span>&copy; @DateTime.Now.Year - Parlamento Elettronico Online - dev</span>
     &bull;
-    <span>Questo sito usa parti di Liquid Feedback</span>
+    <span>Questo sito in parte Liquid Feedback</span>
     &bull;
-    <span>Questo sito usa <a href="http://glyphicons.com/">Glyphicons</a></span>
+    <span>Usiamo <a href="http://glyphicons.com/">Glyphicons</a></span>
     &bull;
     <a>Info e condizioni d'uso</a>
 </div>

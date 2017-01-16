@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Attiva utente";
+}
+
+<h2>Registrazione utente</h2>
+<p>In questa pagina ti guideremo attraverso i pochi passi necessari a completare la tua registrazione.</p>
+<form action="@Url.Action("ActivateUser")" method="post" class="form-horizontal" data-toggle="validator" role="form">
+    @Html.AntiForgeryToken()
+
+    @*Form group for the title of the problem*@
+    <div class="form-group">
+        <label class="control-label" for="emailAddress">Inserisci l'indirizzo e-mail con cui registrarti e su cui ricevere i nostri avvisi</label>
+        <input class="form-control" type="text" id="emailAddress" placeholder="Indirizzo e-mail" style="max-width: unset; max-height: unset;" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="username">Inserisci il nome utente con cui accedere</label>
+        <input class="form-control" type="text" id="username" placeholder="Nome utente" style="max-width: unset; max-height: unset;" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="password">Inserisci la tua password personale</label>
+        <input class="form-control" type="text" id="password" placeholder="Password personale" style="max-width: unset; max-height: unset;" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="tokenID">Inserisci il numero di serie riportato sul retro del tuo token</label>
+        <input class="form-control" type="text" id="password" placeholder="7972XXXXX" style="max-width: unset; max-height: unset;" />
+    </div>
+
+    <a>Leggi le condizioni d'uso</a>
+
+    <input type="submit" value="Accetta le condizioni d'uso e prosegui"/>
+</form>

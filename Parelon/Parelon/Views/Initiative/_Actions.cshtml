@@ -11,10 +11,11 @@
         <div id="actionsMenu" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
                 <ul class="bs-ul bs-ul-actions">
-                    @if (Request.IsAuthenticated)
+                    @if (User.Identity.IsAuthenticated)
                     {
                         <li><a class="btn btn-info"><div class="glyphicon glyphicon-thumbs-up"></div> Sostieni</a></li>
                         <li><a class="btn btn-info"><div class="glyphicon glyphicon-volume-off"></div>Disattiva aggiornamenti da questa soluzione</a></li>
+                        <li><a class="btn btn-info" href="~/Wizard/AddInitiative"><div class="glyphicon glyphicon-edit"></div>Modifica</a></li>
                         <li><a class="btn btn-info" href="~/Wizard/AddInitiative"><div class="glyphicon glyphicon-edit"></div>Proponi una soluzione alternativa</a></li>
                         <li>@Html.ActionLink("Vota", "VoteNow", "Vote", routeValues: null, htmlAttributes: new { @class = "btn btn-success" })</li>
                         <li class="divider"></li>

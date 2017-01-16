@@ -21,6 +21,9 @@ else
     <div class="col-xs-5 col-xs-offset-2 text-center">
         @Html.ActionLink("Discussioni interne", "LeggiScrivi", "Assembly", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-block" })
     </div>
+    <div class="col-xs-5 col-xs-offset-2 text-center">
+        @Html.ActionLink("Commissioni Tecniche", "LeggiScrivi", "Assembly", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-block" })
+    </div>
 </div>
 
 @if (Request.IsAuthenticated)

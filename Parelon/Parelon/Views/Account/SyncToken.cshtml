@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "SyncToken";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sincronizzazione del token</h2>
+
+<p>In questa pagina puoi sincronizzare il tuo token. Per effettuare questa operazione ti vengono richiesti due valori <ins>consecutivi</ins> generati dal tuo token personale.</p>
+
+<form action="@Url.Action("SyncToken")" method="post" class="form-horizontal" data-toggle="validator" role="form">
+    @Html.AntiForgeryToken()
+
+    @*Form group for the title of the problem*@
+    <div class="form-group">
+        <label class="control-label" for="username">Inserisci il tuo nome utente</label>
+        <input class="form-control" type="text" id="username" placeholder="Nome utente" style="max-width: unset; max-height: unset;" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="otp1">Inserisci il primo valore visualizzato</label>
+        <input class="form-control" type="number" id="otp1" placeholder="Primo valore" style="max-width: unset; max-height: unset;" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="otp2">Aspetta che il valore visualizzato cambi e poi inserisci il nuovo valore</label>
+        <input class="form-control" type="number" id="otp2" placeholder="Secondo valore" style="max-width: unset; max-height: unset;" />
+    </div>
+
+    <input type="submit" value="Esegui sincronizzazione" />
+</form>

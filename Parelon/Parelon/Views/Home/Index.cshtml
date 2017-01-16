@@ -31,5 +31,9 @@
 <div class="row"><div class="col-xs-12"><hr/></div></div>
 <div class="row">
     <div class="col-xs-6 col-xs-offset-2"><span class="text-center">Hai un codice di attivazione e non sai come usarlo? Clicca su "Attiva account"</span></div>
-    <div class="col-xs-2">@Html.ActionLink("Attiva account", "Activate", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn btn-primary  btn-block my_jumbatron" })</div>
+    <div class="col-xs-2">@Html.ActionLink("Attiva account", "ActivateUser", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn btn-primary btn-block my_jumbatron" })</div>
+</div>
+<div class="row">
+    <div class="col-xs-6 col-xs-offset-2"><span class="text-center">Se sei registrato ma il valore del tuo token viene rifiutato prova a sincronizzare il token cliccando su "Sinconizza token"</span></div>
+    <div class="col-xs-2">@Html.ActionLink("Sincronizza token", "SyncToken", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn btn-primary btn-block my_jumbatron" })</div>
 </div>

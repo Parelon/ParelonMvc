@@ -408,6 +408,18 @@ namespace Parelon.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        public ActionResult ActivateUser()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult SyncToken()
+        {
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

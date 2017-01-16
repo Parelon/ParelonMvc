@@ -15,5 +15,10 @@ namespace Parelon.Controllers
             else
                 return View();
         }
+
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }
