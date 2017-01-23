@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Pagina iniziale del wizard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Wizard</h1>
+<hr />
+<div class="row">
+    <div class="col-xs-6">
+        <h3>Discussioni generiche</h3>
+        <h5 class="text-justify">Questo tipo di discussioni sono pensate per essere un luogo di discussione più ampio e più semplice rispetto agli atti parlamentari. Sono pensate per andar bene per qualsiasi tua esigenza. <strong>Se non sai che tipo di discussione scegliere, crea una Nuova discussione.</strong></h5>
+        <div class="row">
+            @Html.ActionLink("Nuova discussione", "AddIssue", routeValues: null, htmlAttributes : new { @class = "btn btn-primary col-xs-3 col-xs-offset-4" })
+        </div>
+    </div>
+    <div class="col-xs-6" style="border-left: solid 1px #333">
+        <h3>Atti parlamentari</h3>
+        <h5 class="text-justify">Il risultato di questo tipo di discussioni sono pensati per essere utilizzati direttamente dai parlamentari. Richiedono quindi più attenzione nella scrittura, un numero importante di allegati, tempi di discussione più lunghi.</h5>
+        <h5 class="text-justify">Gli atti parlamentari possono essere divisi in tre grandi categorie: <em>mozioni</em>, <em>interrogazioni</em> e <em>proposte di legge</em>.</h5>
+        <div class="row">
+            <span class="col-xs-9 text-right"><strong>Le mozioni sono delle linee guida per l'attività delle amministrazioni.</strong></span>
+            <a class="btn btn-primary col-xs-3">Crea mozione</a>
+        </div>
+        <div class="row">
+            <span class="col-xs-9 text-right"><strong>Le interrogazioni servono per sapere cosa stanno facendo le amministrazioni per affrontare un problema.</strong></span>
+            <a class="btn btn-primary col-xs-3">Crea interrogazione</a>
+        </div>
+        <div class="row">
+            <span class="col-xs-9 text-right"><strong>Le proposte di legge servono a modificare le regole di tutti i giorni.</strong></span>
+            <a class="btn btn-primary col-xs-3">Crea p. di legge</a>
+        </div>
+        <h4 class="text-center">Oppure</h4>
+        <div class="row">
+            <span class="col-xs-9 text-right"><strong>Se vuoi analizzare i contenuti di un atto parlamentare con i nostri utenti, clicca su "Segnala atto".</strong></span>
+            <a class="btn btn-primary col-xs-3">Segnala atto</a>
+        </div>
+    </div>
+</div>

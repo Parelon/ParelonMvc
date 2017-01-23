@@ -1,0 +1,56 @@
+﻿<a name="Introduction"></a>
+<div class="row">
+    <div class="col-xs-6">
+        @Html.Partial("~/Views/Shared/ProgressBar.cshtml")
+    </div>
+    <div class="col-xs-6">
+        <div class="row" style="margin-bottom: 0px;">
+            <span class="col-xs-6 box-title"><strong>Social</strong></span>
+        </div>
+        <div class="row well" style="margin-top: 0px;">
+            <div class="col-xs-12">
+                <div class="row">
+                    <span class="col-xs-12">@Context.Request.Host@Context.Request.Path</span>
+                </div>
+                <div class="row" style="margin-top: 5px;">
+                    <div class="fb-like col-xs-12"
+                         data-href="@Context.Request.Host@Context.Request.Path"
+                         data-layout="standard"
+                         data-action="like"
+                         data-show-faces="true">
+                        <a class="fb-xfbml-parse-ignore" target="_blank" href="@Context.Request.Host@Context.Request.Path">Condividi</a>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 5px;">
+                    <div class="col-xs-3">
+                        <a class="twitter-share-button"
+                           href="https://twitter.com/intent/tweet?hashtags=parelon"
+                           data-size="default">Tweet</a>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="g-plusone" data-href="@Context.Request.Host@Context.Request.Path"></div>
+                    </div>
+                    <div class="col-xs-3">
+                        <script type="IN/Share" data-url="@Context.Request.Host@Context.Request.Path" data-counter="right">
+                        </script>
+                    </div>
+                    <div class="col-xs-3">
+                        <a href="https://telegram.me/share/url?url=@Context.Request.Host@Context.Request.Path"><img src="~/Content/Images/telegram_share_white.png" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0px;">
+    <span class="col-xs-4 box-title"><strong>Descrizione</strong></span>
+</div>
+<div class="row well" style="margin-top: 0px;">
+    <div class="col-xs-12 text-justified">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+</div>
+<div class="row" style="margin-bottom: 0px;">
+    <span class="col-xs-4 box-title"><strong>Obiettivo? Da togliere?</strong></span>
+</div>
+<div class="row well text-justified" style="margin-top: 0px;">
+    <div class="col-xs-12">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+</div>

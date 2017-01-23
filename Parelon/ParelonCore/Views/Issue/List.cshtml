@@ -1,0 +1,53 @@
+﻿@using ParelonCore.ViewComponents
+
+@{
+    ViewBag.Title = "Lista problemi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    //Html.RenderAction("TitleBar", "Bars", new { title = "Problemi", subtitle = "Lista dei problemi aperti a cui puoi partecipare" });
+    await Component.InvokeAsync(nameof(TitleBar), new { title = "Problemi", subtitle = "Lista dei problemi aperti a cui puoi partecipare" });
+
+}
+<div class="row" style="margin-bottom: 0px;">
+    <span class="col-xs-12 box-title"><strong>Lista problemi inseriti</strong></span>
+</div>
+<div class="row well" style="margin-top: 0px">
+    <ul class="bs-ul col-xs-12">
+        <li>
+            <div class="row">
+                <a class="col-xs-4 btn btn-primary" href="@Url.Action("ShowDiscussion","Issue")">
+                    Problema Dummy 1
+                </a>
+            </div>
+        </li>
+        <li>
+            <div class="row">
+                <a class="col-xs-4 btn btn-success" href="@Url.Action("ShowAct", "Issue")">
+                    Atto Dummy 2 <div class="badge">In risposta a Problema Dummy 1</div>
+                </a>
+            </div>
+        </li>
+        <li>
+            <div class="row">
+                <a class="col-xs-4 btn btn-danger" href="@Url.Action("ShowAct", "Issue")">
+                    Che ne pensate? <div class="badge">Atto segnalato</div>
+                </a>
+            </div>
+        </li>
+        <li>
+            <div class="row">
+                <a class="col-xs-4 btn btn-primary" href="@Url.Action("ShowDiscussion", "Issue")">
+                    Problema Dummy 4
+                </a>
+            </div>
+        </li>
+        <li>
+            <div class="row">
+                <a class="col-xs-4 btn btn-primary" href="@Url.Action("ShowDiscussion", "Issue")">
+                    Problema Dummy 5
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>

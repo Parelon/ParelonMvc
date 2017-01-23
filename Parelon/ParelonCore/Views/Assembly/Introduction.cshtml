@@ -1,0 +1,37 @@
+﻿@using ParelonCore.Core
+@using ParelonCore.ViewComponents
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    @await Component.InvokeAsync(nameof(TitleBar), new { title = "Bentornato ciccio", subtitle = "Eccoti qua" })
+    @await Component.InvokeAsync(nameof(MessagesBar))
+    //Html.RenderAction("TitleBar", "Bars", new { title = "Bentornato ciccio", subtitle = "Eccoti qua" });
+    //Html.RenderAction("MessagesBar", "Bars");
+
+}
+else
+{
+    @await Component.InvokeAsync(nameof(TitleBar), new { title = "Benvenuto curioso", subtitle = "Eccoti qua" })
+}
+
+<div class="row well">
+    <div class="col-xs-5 text-center">
+        @Html.ActionLink("Politiche pubbliche", "LeggiScrivi", "Assembly", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-block" })
+    </div>
+    <div class="col-xs-5 col-xs-offset-2 text-center">
+        @Html.ActionLink("Discussioni interne", "LeggiScrivi", "Assembly", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-block" })
+    </div>
+    <div class="col-xs-5 col-xs-offset-2 text-center">
+        @Html.ActionLink("Commissioni Tecniche", "LeggiScrivi", "Assembly", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-block" })
+    </div>
+</div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    @await Component.InvokeAsync(nameof(StatusBar))
+    //Html.RenderAction("StatusBar", "Bars");
+}

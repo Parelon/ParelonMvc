@@ -1,0 +1,145 @@
+﻿<a name="Initiatives"></a>
+<div class="row" style="margin-bottom: 0px;">
+    <span class="col-xs-12 box-title"><strong>Lista soluzioni proposte</strong></span>
+</div>
+<div class="row well" style="margin-top: 0px;">
+    <ul class="col-xs-12 bs-ul">
+        <li>
+            <div class="row">
+                <a class="btn btn-default col-xs-4" href="@Url.Action("Show", "Initiative")">
+                    <div class="row">
+                        <div class="text-center col-xs-7">
+                            <strong>Dummy 1</strong>
+                            <br/>
+                            <span>Nome e Cognome</span>
+                        </div>
+                        <div id="chart_div_1" class="col-xs-4" style="height: 75px; max-width: 75px;"></div>
+                    </div>
+                </a>
+            </div>
+        </li>
+        <li>
+            <div class="row">
+                <a class="btn btn-primary col-xs-4 href="@Url.Action("Show", "Initiative")">
+                    <div class="row">
+                        <div class="text-center col-xs-7">
+                            <strong>Dummy 2</strong>
+                            <br />
+                            <span>Nome e Cognome</span>
+                        </div>
+                        <div id="chart_div_2" class="col-xs-4" style="height: 75px; max-width: 75px;"></div>
+                    </div>
+                </a>
+            </div>
+        </li>
+        <li>
+            <div class="row">
+                <a class="btn btn-warning col-xs-4" href="@Url.Action("Show", "Initiative")">
+                    <div class="row">
+                        <div class="text-center col-xs-7">
+                            <strong>Dummy 3</strong>
+                            <br />
+                            <span>Nome e Cognome</span>
+                        </div>
+                        <div id="chart_div_3" class="col-xs-4" style="height: 75px; max-width: 75px;"></div>
+                    </div>
+                </a>
+            </div>
+        </li>
+        <li>
+            <div class="row">
+                <a class="btn btn-info col-xs-4" href="@Url.Action("Show", "Initiative")">
+                    <div class="row">
+                        <div class="text-center col-xs-7">
+                            <strong>Dummy 4</strong>
+                            <br />
+                            <span>Nome e Cognome</span>
+                        </div>
+                        <div id="chart_div_4" class="col-xs-4" style="height: 75px; max-width: 75px;"></div>
+                    </div>
+                </a>
+            </div>
+        </li>
+        <li>
+            <div class="row">
+                <a class="btn btn-success col-xs-4" href="@Url.Action("Show", "Initiative")">
+                    <div class="row">
+                        <div class="text-center col-xs-7">
+                            <strong>Dummy 5</strong>
+                            <br />
+                            <span>Nome e Cognome</span>
+                        </div>
+                        <div id="chart_div_5" class="col-xs-4" style="height: 75px; max-width: 75px;"></div>
+                    </div>
+                </a>
+            </div>
+        </li>
+        <li>
+            <div class="row">
+                <a class="btn btn-danger col-xs-4" href="@Url.Action("Show", "Initiative")">
+                    <div class="row">
+                        <div class="text-center col-xs-7">
+                            <strong>Dummy 6</strong>
+                            <br />
+                            <span>Nome e Cognome</span>
+                        </div>
+                        <div id="chart_div_6" class="col-xs-4" style="height: 75px; max-width: 75px;"></div>
+                    </div>
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+    google.charts.load('current', { 'packages': ['gauge'] });
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['Support', 80],
+        ]);
+
+        var options = {
+            width: 75, height: 75,
+            redFrom: 0, redTo: 50,
+            yellowFrom: 50, yellowTo: 75,
+            greenFrom: 75, greenTo: 100,
+            minorTicks: 5
+        };
+
+        var chart1 = new google.visualization.Gauge(document.getElementById('chart_div_1'));
+        chart1.draw(data, options);
+        data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+        var chart2 = new google.visualization.Gauge(document.getElementById('chart_div_2'));
+        chart2.draw(data, options);
+        data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+        var chart3 = new google.visualization.Gauge(document.getElementById('chart_div_3'));
+        chart3.draw(data, options);
+        data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+        var chart4 = new google.visualization.Gauge(document.getElementById('chart_div_4'));
+        chart4.draw(data, options);
+        data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+        var chart5 = new google.visualization.Gauge(document.getElementById('chart_div_5'));
+        chart5.draw(data, options);
+        data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+        var chart6 = new google.visualization.Gauge(document.getElementById('chart_div_6'));
+        chart6.draw(data, options);
+
+        setInterval(function () {
+            data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+            chart1.draw(data, options);
+            data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+            chart2.draw(data, options);
+            data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+            chart3.draw(data, options);
+            data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+            chart4.draw(data, options);
+            data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+            chart5.draw(data, options);
+            data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+            chart6.draw(data, options);
+        }, 1000);
+    }
+</script>

@@ -9,12 +9,12 @@ namespace ParelonCore.Controllers
 {
     public class BarsController : Controller
     {
-        public ActionResult TitleBar(string title, string subtitle)
-        {
-            ViewBag.Title = title;
-            ViewBag.Subtitle = subtitle;
-            return PartialView();
-        }
+        //public ActionResult TitleBar(string title, string subtitle)
+        //{
+        //    ViewBag.Title = title;
+        //    ViewBag.Subtitle = subtitle;
+        //    return PartialView();
+        //}
 
         public ActionResult GoPrev()
         {
@@ -32,15 +32,15 @@ namespace ParelonCore.Controllers
             else return null;
         }
         
-        public ActionResult StatusBar()
-        {
-            return PartialView();
-        }
+        //public ActionResult StatusBar()
+        //{
+        //    return PartialView();
+        //}
 
-        public ActionResult MessagesBar()
-        {
-            return PartialView();
-        }
+        //public ActionResult MessagesBar()
+        //{
+        //    return PartialView();
+        //}
 
         public ActionResult AmendmentBar()
         {

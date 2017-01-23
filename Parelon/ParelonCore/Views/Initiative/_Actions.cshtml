@@ -1,0 +1,34 @@
+﻿<div class="panel-group actions" id="accordion" role="tablist" aria-multiselectable="false" style="z-index: 1; width: auto;">
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <div class="row">
+                <span class="box-title col-xs-4"><strong>Azioni Possibili</strong></span>
+                <a role="button" class="col-xs-offset-2 col-xs-6 btn btn-default" data-toggle="collapse" data-parent="#accordion" href="#actionsMenu" aria-expanded="true" aria-controls="collapseOne">
+                    Mostra/Nascondi
+                </a>
+            </div>
+        </div>
+        <div id="actionsMenu" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                <ul class="bs-ul bs-ul-actions">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a class="btn btn-info"><div class="glyphicon glyphicon-thumbs-up"></div> Sostieni</a></li>
+                        <li><a class="btn btn-info"><div class="glyphicon glyphicon-volume-off"></div>Disattiva aggiornamenti da questa soluzione</a></li>
+                        <li><a class="btn btn-info" href="~/Wizard/AddInitiative"><div class="glyphicon glyphicon-edit"></div>Modifica</a></li>
+                        <li><a class="btn btn-info" href="~/Wizard/AddInitiative"><div class="glyphicon glyphicon-edit"></div>Proponi una soluzione alternativa</a></li>
+                        <li>@Html.ActionLink("Vota", "VoteNow", "Vote", routeValues: null, htmlAttributes: new { @class = "btn btn-success" })</li>
+                        <li class="divider"></li>
+                    }
+                    <li><a class="btn btn-default">Vai alla Pagina di discussione (se attivata dagli autori)</a></li>
+                    <li class="divider"></li>
+                    <li><a class="btn btn-default" href="#Introduction">Mostra l'introduzione</a></li>
+                    <li><a class="btn btn-default" href="#Draft">Mostra il testo</a></li>
+                    <li><a class="btn btn-default" href="#Comment">Mostra gli emendamenti</a></li>
+                    <li><a class="btn btn-default" href="#Attachment">Mostra gli allegati</a></li>
+                    <li><a class="btn btn-default" href="#Transparency">Mostra l'area trasparenza</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

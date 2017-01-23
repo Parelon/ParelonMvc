@@ -1,0 +1,31 @@
+﻿@using Parelon.Core;
+<a name="Supporters"></a>
+<div class="row" style="margin-bottom: 0px;">
+    <span class="col-xs-4 box-title"><strong>Sostenitori</strong></span>
+</div>
+<div class="row well" style="margin-top: 0px;">
+    @if (!Privacy.isAnonimous())
+    {
+        <div class="user-box">
+            <div class="col-xs-12">
+                @for (int i = 0; i < 50; i++)
+                {
+                    <div class="user-box-element col-xs-2">
+                        <div class="row">
+                            <div class="col-xs-4 user-box-avatar">
+                                <div class="glyphicon glyphicon-user"></div>
+                            </div>
+                            <div class="col-xs-8">
+                                <span>Utente @(i + 1)</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <span>Per questa discussione è stata chiesta e ottenuta la discussione anonima. Tutti i dati saranno pubblicati alla chiusura della discussione.</span>
+    }
+</div>

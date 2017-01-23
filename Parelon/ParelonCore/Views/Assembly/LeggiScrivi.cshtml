@@ -1,0 +1,43 @@
+﻿@using ParelonCore.Core
+@using ParelonCore.ViewComponents
+
+@{
+    ViewBag.Title = "Assemblea X";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ //Html.RenderAction("TitleBar", "Bars", new { title = "Assemblea", subtitle = "Seleziona un'azione" });
+    @await Component.InvokeAsync(nameof(TitleBar), new { title = "Assemblea", subtitle = "Seleziona un'azione" }); }
+
+<div class="row">
+    <div class="col-xs-2 col-xs-offset-2">
+        @Html.ActionLink("Leggi", "List", "Territory", routeValues: null, htmlAttributes: new { @class = "btn btn-primary " })
+    </div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="col-xs-2 col-xs-offset-4">
+            @Html.ActionLink("Scrivi", "Start", "Wizard", routeValues: null, htmlAttributes: new { @class = "btn btn-primary " })
+        </div>
+    }
+</div>
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="row">
+        <div class="col-xs-6">
+            <h5>
+                Le tue proposte
+            </h5>
+            <div style="border-top: solid 1px #333">
+                Elenco proposte recenti
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <h5>
+                I tuoi voti
+            </h5>
+            <div style="border-top: solid 1px #333">
+                Elenco voti recenti
+            </div>
+        </div>
+    </div>
+}

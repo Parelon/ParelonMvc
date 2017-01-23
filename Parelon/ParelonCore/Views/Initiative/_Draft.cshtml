@@ -1,0 +1,27 @@
+﻿@using ParelonCore.ViewComponents
+
+<a name="Draft"></a>
+<div class="row" style="margin-bottom: 0px;">
+    <span class="col-xs-4 box-title"><strong>Testo <ins>XML</ins></strong></span>
+</div>
+@*<div class="well row" style="margin-top: 0px;">
+    <div class="col-xs-12">*@
+        @{
+            //Html.RenderAction("ShowXml", "Draft");
+            await Component.InvokeAsync(nameof(Draft), new { tipo = Draft.DraftType.Xml });
+        }
+    @*</div>
+</div>*@
+
+<h2>Oppure</h2>
+
+<div class="row" style="margin-bottom: 0px;">
+    <span class="col-xs-4 box-title"><strong>Testo <ins>Plain</ins></strong></span>
+</div>
+<div class="well row" style="margin-top: 0px;">
+    <div class="col-xs-12">
+        @{ //Html.RenderAction("ShowPlain", "Draft");
+            await Component.InvokeAsync(nameof(Draft), new { tipo = Draft.DraftType.Plain });
+             }
+    </div>
+</div>

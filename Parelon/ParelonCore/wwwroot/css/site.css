@@ -1,13 +1,30 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    
+    /*margin-left: 1%;
+    margin-right: 1%;
+    padding: 0%;
+    */
+    background-image:  url(../images/wallpaper.jpg);
+}
+
 }
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
+    
     padding-left: 15px;
     padding-right: 15px;
+    /*
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top: 4%;
+    margin-bottom: 3%;
+    height: 95%;
+    background: rgba(255,255,255,0.63);
+        */
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
@@ -25,26 +42,26 @@ textarea {
 
 /* buttons and links extension to use brackets: [ click me ] */
 .btn-bracketed::before {
-    display:inline-block;
+    display: inline-block;
     content: "[";
     padding-right: 0.5em;
 }
+
 .btn-bracketed::after {
-    display:inline-block;
+    display: inline-block;
     content: "]";
     padding-left: 0.5em;
 }
 
 /* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"]
-{
+.carousel-inner .item img[src$=".svg"] {
     width: 100%;
 }
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
-  /* Hide captions */
-  .carousel-caption {
-    display: none
-  }
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
 }

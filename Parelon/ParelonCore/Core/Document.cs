@@ -12,201 +12,229 @@ namespace ParelonCore.Core
     {
         public static Document instance { get; set; }
 
-        public XDocument toXml ( )
+        public XDocument toXml()
         {
             return new XDocument();
         }
 
 
-        public Document ( String text )
+        public Document(String text)
         {
-            
+
             int id = 1;
             doc = new XDocument();
-            XDeclaration xmlDeclaration = doc.CreateXmlDeclaration("1.0", "UTF-8", null);
-            XElement root = doc.CreateElement("root");
-            XAttribute idAttr = doc.CreateAttribute("id");
-            idAttr.Value = id++.ToString();
-            root.Attributes.Append(idAttr);            
-            doc.AppendChild(root);
-            doc.InsertBefore(xmlDeclaration, root);
+            XDeclaration xmlDeclaration = new XDeclaration("1.0", "UTF-8", null);  //doc.CreateXmlDeclaration("1.0", "UTF-8", null);
+            XElement root = new XElement("root"); // doc.CreateElement("root");
+            XAttribute idAttr = new XAttribute("id", id++.ToString()); // doc.CreateAttribute("id");
+            //idAttr.Value = id++.ToString();
+            //root.Attributes.Append(idAttr);            
+            root.SetAttributeValue(idAttr.Name, idAttr.Value);
+            doc.Declaration = xmlDeclaration;
+            doc.Add(root);
+            //doc.InsertBefore(xmlDeclaration, root);
 
             String separator = @"\r\n";
             String[] strings = Regex.Split(text, separator);
-            XmlElement lastContainer = null, lastArticle = null, lastParagraph = null, lastList = null;
+            XElement lastContainer = null, lastArticle = null, lastParagraph = null, lastList = null;
             bool isInArticle = false;
             for (int idx = 0; idx < strings.Length; idx++)
             {
                 if (strings[idx].StartsWith(@"\titolo"))
                 {
-                    lastContainer = doc.CreateElement("title");
-                    idAttr = doc.CreateAttribute("id");
-                    idAttr.Value = id++.ToString();
-                    lastContainer.Attributes.Append(idAttr);
-                    root.AppendChild(lastContainer);
-                    XmlElement element = doc.CreateElement("p");
-                    idAttr = doc.CreateAttribute("id");
-                    idAttr.Value = id++.ToString();
-                    element.Attributes.Append(idAttr);
-                    element.InnerText = strings[idx].Replace(@"\titolo", @"").Trim();
-                    lastContainer.AppendChild(element);
+                    lastContainer = new XElement("title", new XAttribute("id", id++.ToString())); // doc.CreateElement("title");
+                    //idAttr = new XAttribute("id", id++.ToString()); //doc.CreateAttribute("id");
+                    //idAttr.Value = id++.ToString();
+                    //lastContainer.Attributes.Append(idAttr);
+                    //lastContainer.SetAttributeValue(idAttr.Name, idAttr.Value);
+                    //root.AppendChild(lastContainer);
+                    root.Add(lastContainer);
+                    XElement element = new XElement("p", new XAttribute("id", id++.ToString())); // doc.CreateElement("p");
+                    //idAttr = new XAttribute("id", id++.ToString());  //doc.CreateAttribute("id");
+                    //idAttr.Value = id++.ToString();
+                    //element.Attributes.Append(idAttr);
+                    //element.SetAttributeValue(idAttr.Name, idAttr.Value);
+                    //element.InnerText = strings[idx].Replace(@"\titolo", @"").Trim();
+                    element.Value = strings[idx].Replace(@"\titolo", @"").Trim();
+                    //lastContainer.AppendChild(element);
+                    lastContainer.Add(element);
                     isInArticle = false;
                 }
                 else if (strings[idx].StartsWith(@"\sottotitolo"))
                 {
-                    lastContainer = doc.CreateElement("subtitle");
-                    root.AppendChild(lastContainer);
-                    idAttr = doc.CreateAttribute("id");
-                    idAttr.Value = id++.ToString();
-                    lastContainer.Attributes.Append(idAttr);
-                    XmlElement element = doc.CreateElement("p");
-                    idAttr = doc.CreateAttribute("id");
-                    idAttr.Value = id++.ToString();
-                    element.Attributes.Append(idAttr);
-                    element.InnerText = strings[idx].Replace(@"\sottotitolo", @"").Trim();
-                    lastContainer.AppendChild(element);
+                    lastContainer = new XElement("subtitle", new XAttribute("id", id++.ToString())); // doc.CreateElement("subtitle");
+                    //root.AppendChild(lastContainer);
+                    root.Add(lastContainer);
+                    //idAttr = doc.CreateAttribute("id");
+                    //idAttr.Value = id++.ToString();
+                    //lastContainer.Attributes.Append(idAttr);
+                    //lastContainer.SetAttributeValue(idAttr.Name, idAttr.Value);
+
+                    XElement element = new XElement("p", new XAttribute("id", id++.ToString())); // doc.CreateElement("p");
+                    //idAttr = doc.CreateAttribute("id");
+                    //idAttr.Value = id++.ToString();
+                    //element.Attributes.Append(idAttr);
+                    //element.SetAttributeValue(idAttr.Name, idAttr.Value);
+                    //element.InnerText = strings[idx].Replace(@"\sottotitolo", @"").Trim();
+                    element.Value = strings[idx].Replace(@"\sottotitolo", @"").Trim();
+                    //lastContainer.AppendChild(element);
+                    lastContainer.Add(element);
                     isInArticle = false;
                 }
                 else if (strings[idx].StartsWith(@"\introduzione"))
                 {
-                    lastContainer = doc.CreateElement("introduction");
-                    root.AppendChild(lastContainer);
-                    idAttr = doc.CreateAttribute("id");
-                    idAttr.Value = id++.ToString();
-                    lastContainer.Attributes.Append(idAttr);
-                    XmlElement element = doc.CreateElement("p");
-                    idAttr = doc.CreateAttribute("id");
-                    idAttr.Value = id++.ToString();
-                    element.Attributes.Append(idAttr);
-                    element.InnerText = strings[idx].Replace(@"\introduzione", @"").Trim();
-                    lastContainer.AppendChild(element);
+                    lastContainer = new XElement("introduction", new XAttribute("id", id++.ToString())); // doc.CreateElement("introduction");
+                    root.Add(lastContainer);
+                    //idAttr = doc.CreateAttribute("id");
+                    //idAttr.Value = id++.ToString();
+                    //lastContainer.SetAttributeValue(idAttr.Name, idAttr.Value);
+                    XElement element = new XElement("p", new XAttribute("id", id++.ToString())); //doc.CreateElement("p");
+                    //idAttr = doc.CreateAttribute("id");
+                    //idAttr.Value = id++.ToString();
+                    //element.SetAttributeValue(idAttr.Name, idAttr.Value);
+                    element.Value = strings[idx].Replace(@"\introduzione", @"").Trim();
+                    lastContainer.Add(element);
                     isInArticle = false;
                 }
                 else if (strings[idx].StartsWith(@"\testo"))
                 {
-                    lastContainer = doc.CreateElement("text");
-                    root.AppendChild(lastContainer);
-                    idAttr = doc.CreateAttribute("id");
-                    idAttr.Value = id++.ToString();
-                    lastContainer.Attributes.Append(idAttr);
-                    XmlElement element = doc.CreateElement("p");
-                    idAttr = doc.CreateAttribute("id");
-                    idAttr.Value = id++.ToString();
-                    element.Attributes.Append(idAttr);
-                    element.InnerText = strings[idx].Replace(@"\testo", @"").Trim();
-                    lastContainer.AppendChild(element);
+                    lastContainer = new XElement("text", new XAttribute("id", id++.ToString())); //doc.CreateElement("text");
+                    root.Add(lastContainer);
+                    //idAttr = doc.CreateAttribute("id");
+                    //idAttr.Value = id++.ToString();
+                    //lastContainer.SetAttributeValue(idAttr.Name, idAttr.Value);
+                    XElement element = new XElement("p", new XAttribute("id", id++.ToString())); //doc.CreateElement("p");
+                    //idAttr = doc.CreateAttribute("id");
+                    //idAttr.Value = id++.ToString();
+                    //element.SetAttributeValue(idAttr.Name, idAttr.Value);
+                    element.Value = strings[idx].Replace(@"\testo", @"").Trim();
+                    lastContainer.Add(element);
                     isInArticle = false;
                 }
                 else if (strings[idx].StartsWith(@"\conclusioni"))
                 {
-                    lastContainer = doc.CreateElement("conclusions");
-                    root.AppendChild(lastContainer);
-                    idAttr = doc.CreateAttribute("id");
-                    idAttr.Value = id++.ToString();
-                    lastContainer.Attributes.Append(idAttr);
-                    XmlElement element = doc.CreateElement("p");
-                    idAttr = doc.CreateAttribute("id");
-                    idAttr.Value = id++.ToString();
-                    element.Attributes.Append(idAttr);
-                    element.InnerText = strings[idx].Replace(@"\conclusioni", @"").Trim();
-                    lastContainer.AppendChild(element);
+                    lastContainer = new XElement("conclusions", new XAttribute("id", id++.ToString())); //doc.CreateElement("conclusions");
+                    root.Add(lastContainer);
+                    //idAttr = doc.CreateAttribute("id");
+                    //idAttr.Value = id++.ToString();
+                    //lastContainer.SetAttributeValue(idAttr.Name, idAttr.Value);
+                    XElement element = new XElement("p", new XAttribute("id", id++.ToString())); //doc.CreateElement("p");
+                    //idAttr = doc.CreateAttribute("id");
+                    //idAttr.Value = id++.ToString();
+                    //element.SetAttributeValue(idAttr.Name, idAttr.Value);
+                    element.Value = strings[idx].Replace(@"\conclusioni", @"").Trim();
+                    lastContainer.Add(element);
                     isInArticle = false;
                 }
                 else if (strings[idx].StartsWith(@"\articolo"))
                 {
-                    lastArticle = doc.CreateElement("article");
-                    lastContainer.AppendChild(lastArticle);
-                    idAttr = doc.CreateAttribute("id");
-                    idAttr.Value = id++.ToString();
-                    lastArticle.Attributes.Append(idAttr);
-                    XmlElement articleTitle = doc.CreateElement("p");
-                    articleTitle.InnerText = strings[idx].Replace(@"\articolo", @"").Trim();
-                    idAttr = doc.CreateAttribute("id");
-                    idAttr.Value = id++.ToString();
-                    articleTitle.Attributes.Append(idAttr);
-                    lastArticle.AppendChild(articleTitle);
+                    lastArticle = new XElement("article", new XAttribute("id", id++.ToString())); //doc.CreateElement("article");
+                    lastContainer.Add(lastArticle);
+                    //idAttr = doc.CreateAttribute("id");
+                    //idAttr.Value = id++.ToString();
+                    //lastArticle.SetAttributeValue(idAttr.Name, idAttr.Value);
+                    XElement articleTitle = new XElement("p", new XAttribute("id", id++.ToString())); //doc.CreateElement("p");
+                    articleTitle.Value = strings[idx].Replace(@"\articolo", @"").Trim();
+                    //idAttr = doc.CreateAttribute("id");
+                    //idAttr.Value = id++.ToString();
+                    //articleTitle.SetAttributeValue(idAttr.Name, idAttr.Value);
+                    lastArticle.Add(articleTitle);
                     isInArticle = true;
                 }
                 else if (strings[idx].StartsWith(@"\elenco"))
                 {
-                    lastList = doc.CreateElement("ul");
-                    idAttr = doc.CreateAttribute("id");
-                    idAttr.Value = id++.ToString();
-                    lastList.Attributes.Append(idAttr);
+                    lastList = new XElement("ul", new XAttribute("id", id++.ToString())); //doc.CreateElement("ul");
+                    //idAttr = doc.CreateAttribute("id");
+                    //idAttr.Value = id++.ToString();
+                    //lastList.SetAttributeValue(idAttr.Name, idAttr.Value);
                     if (lastParagraph != null)
-                        lastParagraph.AppendChild(lastList);
+                        lastParagraph.Add(lastList);
                     isInArticle = true;
                 }
                 else if (strings[idx].StartsWith(@"-") && lastList != null)
                 {
-                    XmlElement element = doc.CreateElement("il");
-                    idAttr = doc.CreateAttribute("id");
-                    idAttr.Value = id++.ToString();
-                    element.Attributes.Append(idAttr);
-                    lastList.AppendChild(element);
-                    element.AppendChild(doc.CreateElement("p"));
-                    idAttr = doc.CreateAttribute("id");
-                    idAttr.Value = id++.ToString();
-                    element.LastChild.Attributes.Append(idAttr);
-                    element.LastChild.InnerText = strings[idx].Replace(@"-", @"").Trim();
+                    XElement element = new XElement("il", new XAttribute("id", id++.ToString())); //doc.CreateElement("il");
+                    //idAttr = doc.CreateAttribute("id");
+                    //idAttr.Value = id++.ToString();
+                    //element.SetAttributeValue(idAttr.Name, idAttr.Value);
+                    XElement element2 = new XElement("p", new XAttribute("id", id++.ToString()));
+                    element2.Value = strings[idx].Replace(@"-", @"").Trim();
+                    element.Add(element2);
+
+                    lastList.Add(element);
+
+
+                    //element.Add(doc.CreateElement("p"));
+                    //idAttr = doc.CreateAttribute("id");
+                    //idAttr.Value = id++.ToString();
+                    //element.LastChild.Attributes.Append(idAttr);
+                    //element.LastChild.InnerText = strings[idx].Replace(@"-", @"").Trim();
                 }
                 else
                 {
-                    XmlElement element;
+                    XElement element;
                     if (isInArticle)
                     {
-                        element = doc.CreateElement("paragraph");
-                        idAttr = doc.CreateAttribute("id");
-                        idAttr.Value = id++.ToString();
-                        element.Attributes.Append(idAttr);
-                        lastArticle.AppendChild(element);
+                        element = new XElement("paragraph", new XAttribute("id", id++.ToString())); //doc.CreateElement("paragraph");
+                        //idAttr = doc.CreateAttribute("id");
+                        //idAttr.Value = id++.ToString();
+                        //element.SetAttributeValue(idAttr.Name, idAttr.Value);
+
+                        XElement element2 = new XElement("p", new XAttribute("id", id++.ToString()));
+                        element2.Value = strings[idx].Trim();
+                        element.Add(element2);
+
+                        lastArticle.Add(element);
                         lastParagraph = element;
-                        element.AppendChild(doc.CreateElement("p"));
-                        idAttr = doc.CreateAttribute("id");
-                        idAttr.Value = id++.ToString();
-                        element.LastChild.Attributes.Append(idAttr);
-                        element.LastChild.InnerText = strings[idx].Trim();
+
+                        //element.Add(doc.CreateElement("p"));
+                        //idAttr = doc.CreateAttribute("id");
+                        //idAttr.Value = id++.ToString();
+                        //element.LastChild.Attributes.Append(idAttr);
+                        //element.LastChild.InnerText = strings[idx].Trim();
                     }
                     else if (!strings[idx].Trim().Equals(@""))
                     {
-                        element = doc.CreateElement("p");
-                        element.InnerText = strings[idx].Trim();
-                        idAttr = doc.CreateAttribute("id");
-                        idAttr.Value = id++.ToString();
-                        element.Attributes.Append(idAttr);
+                        element = new XElement("p", new XAttribute("id", id++.ToString())); //doc.CreateElement("p");
+                        element.Value = strings[idx].Trim();
+                        //idAttr = doc.CreateAttribute("id");
+                        //idAttr.Value = id++.ToString();
+                        //element.SetAttributeValue(idAttr.Name, idAttr.Value);
                         if (lastContainer != null)
-                            lastContainer.AppendChild(element);
+                            lastContainer.Add(element);
                     }
                 }
             }
         }
 
-        private XmlDocument doc;
+        private XDocument doc;
 
-        public XmlDocument getDocument { get { return doc; } }
+        public XDocument getDocument { get { return doc; } }
 
-        public XmlNode findNodeById ( string id )
+        public XElement findNodeById(string id)
         {
-            foreach (XmlNode node in doc.LastChild)
+            foreach (XElement node in doc.Root.Elements())
             {
-                XmlNode result = findNodeById(node, id);
+                XElement result = findNodeById(node, id);
                 if (result != null)
                     return result;
             }
             return null;
         }
 
-        public XmlNode findNodeById ( XmlNode node, string id )
+        public XElement findNodeById(XElement node, string id)
         {
-            if (node.Name.Equals("p"))
+            var t = doc.Descendants("Move").Last();
+
+            if (node.Name.LocalName == "p")
                 return null;
-            if (node.Attributes.GetNamedItem("id").Value.Equals(id))
+            if (node.Attribute("id").Value.Equals(id))
                 return node;
-            if (node.HasChildNodes)
+            if (node.Elements().Count() > 1)
             {
-                for (int i = 0; i < node.ChildNodes.Count; i++)
+                //for (int i = 0; i < node.ChildNodes.Count; i++)
+                foreach (XElement _child in node.Elements())
                 {
-                    XmlNode result = findNodeById(node.ChildNodes[i], id);
+                    XElement result = findNodeById(_child, id);
                     if (result != null)
                         return result;
                 }
@@ -215,7 +243,5 @@ namespace ParelonCore.Core
         }
     }
 
-    internal class XmlElement
-    {
-    }
+
 }

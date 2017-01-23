@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Amministrazione del sistema</h2>
+
+@* titolo della pagina *@
+
+<h3>Azioni possibili</h3>
+
+<ul>
+    <li>@Html.ActionLink("Impostazioni di discussione", "Policies", "Admin")</li>
+    <li>@Html.ActionLink("Territori", "Territories")</li>
+    <li>@Html.ActionLink("Utenti", "Members")</li>
+    <li>@Html.ActionLink("Copie database", "DatabaseDumps")</li>
+    <li>@Html.ActionLink("Altro", "OtherConfigs")</li>
+</ul>

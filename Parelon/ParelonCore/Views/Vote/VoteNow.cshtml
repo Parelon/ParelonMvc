@@ -1,0 +1,75 @@
+﻿@using ParelonCore.ViewComponents
+
+@{
+    ViewBag.Title = "Vota adesso!";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ 
+    //Html.RenderAction("TitleBar", "Bars", new { title = "Votazione aperta", subtitle = "Vota subito mettendo in ordine di  gradimento le soluzioni proposte. Fino a quando le votazioni non verranno chiuse, potrai cambiare il tuo voto. Quando le votazioni si chiuderanno il tuo voto divverrà pubblico." });
+    await Component.InvokeAsync(nameof(TitleBar), new { title = "Votazione aperta", subtitle = "Vota subito mettendo in ordine di  gradimento le soluzioni proposte. Fino a quando le votazioni non verranno chiuse, potrai cambiare il tuo voto. Quando le votazioni si chiuderanno il tuo voto divverrà pubblico." });
+    }
+
+<div class="panel panel-success">
+    <div class="panel-heading">Voto positivo</div>
+    <div class="panel-body" id="positive-box"></div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Voto Neutro</div>
+    <div class="panel-body" id="neutral-box">
+        @for (int i = 1; i <= 4; i++)
+        {
+            Html.RenderAction("_VoteBox", new { initiativeId = i });
+        }
+    </div>
+</div>
+
+<div class="panel panel-danger">
+    <div class="panel-heading">Voto Negativo</div>
+    <div class="panel-body" id="negative-box"></div>
+</div>
+
+<script>
+    function MoveUp(id) {
+        var level = $("#" + id)[0].attributes.level.value;
+        level++;
+        $("#" + id)[0].attributes.level.value = level;
+        if (level > 0) {
+            $("#" + id).detach().appendTo('#positive-box');
+            $("#" + id)[0].attributes.class.value = "row alert alert-success";
+            $("#level-" + id).text("+" + level);
+        }
+        else if (level == 0) {
+            $("#" + id).detach().appendTo('#neutral-box');
+            $("#" + id)[0].attributes.class.value = "row alert alert-info";
+            $("#level-" + id).text("0");
+        }
+        else {
+            $("#" + id).detach().appendTo('#negative-box')
+            $("#" + id)[0].attributes.class.value = "row alert alert-danger";
+            $("#level-" + id).text(level);
+        }
+    }
+
+    function MoveDown(id) {
+        var level = $("#" + id)[0].attributes.level.value;
+        level--;
+        $("#" + id)[0].attributes.level.value = level;
+        if (level > 0) {
+            $("#" + id).detach().appendTo('#positive-box');
+            $("#" + id)[0].attributes.class.value = "alert alert-success";
+            $("#level-" + id).text("+" + level);
+        }
+        else if (level == 0) {
+            $("#" + id).detach().appendTo('#neutral-box');
+            $("#" + id)[0].attributes.class.value = "alert alert-info";
+            $("#level-" + id).text("0");
+        }
+        else {
+            $("#" + id).detach().appendTo('#negative-box')
+            $("#" + id)[0].attributes.class.value = "alert alert-danger";
+            $("#level-" + id).text(level);
+        }
+    }
+</script>

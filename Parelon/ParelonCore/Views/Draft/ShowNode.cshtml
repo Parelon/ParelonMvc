@@ -1,0 +1,27 @@
+﻿@*@using System.Xml.Linq
+
+@if (!ViewBag.node.Name.Equals("p"))
+{
+    XElement node = ViewBag.node;
+    string id = node.Attribute("id").Value;
+
+    <div class="row structure-element" id="@id" onclick="OnClick_XmlElement(arguments[0] || window.event, this)" type="@ViewBag.node.Name">
+        <div class="tag">@node.Name</div>
+        <div class="col-xs-11 col-xs-offset-1 @node.Name">
+            @if (node.HasElements)
+            {
+                foreach (XElement childNode in node.Elements())
+                {
+                    @await Component.InvokeAsync("Draft", new { tipo = "Node", nodo = childNode });
+                    //Html.RenderAction("ShowNode", "Draft", new { node = childNode });
+                }
+            }
+            else {<div class="@ViewBag.node.Name">@ViewBag.node.InnerText</div>}
+        </div>
+    </div>
+}
+else
+{
+    <div class="p" id="@ViewBag.node.Attributes.GetNamedItem("id").Value" onclick="OnClick_XmlElement(arguments[0] || window.event, this)">@ViewBag.node.InnerText</div>
+}*@
+
